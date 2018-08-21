@@ -1,0 +1,74 @@
+/* new_product.css */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+div.wrapper{
+    /* align-content: center; */
+    margin-left: 8%;
+    margin-right: 8%;
+    min-height: 500px;
+    max-width: 1300px;
+}
+
+
+
+
+    /* ============= DASHBOARD =========== */
+/* ----------- container ----------
+div.dashboard_container{
+    background-color: rgb(254, 239, 231);
+    min-height: 400px;
+    padding: 5px;
+} */
+/* ----------- all inside CREATE ----- */
+    div.create_product{
+        background-color: white;
+        padding: 8px;
+
+    }
+    /*==== form is inside here ===*/
+    div.create_form{
+        width: 350px;
+        margin: 0 auto;
+        border-radius: 15px;
+        background-color: white;
+        padding: 5px;
+    
+    }
+   
+/**************************************
+**             BUTTONS               **
+**************************************/
+/* ---- ALL buttons styles ------ */
+.labels button{
+    margin-top: 10px;
+    margin-bottom: 1px;
+    /* height: 40px;
+    width: 80px; */
+    padding: 5px 10px;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #DEE7E7; 
+    background-color: white; 
+    /* webkit-transition-duration: 0.4s; Safari */
+    transition-duration: 0.4s;
+}
+    .labels button:hover {
+        background-color: #DEE7E7;
+        color: white;
+        /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
+    }
+
+    input[type=number], input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+

@@ -1,0 +1,56 @@
+<button [routerLink]="['/admindash']">
+    Back</button>
+<div class="dashboard_container">
+    dashboard_container
+    <div class="create_product">
+        <div class="create_form">
+            Add New Product
+            <br>
+            <hr>
+            <br>
+            <div class="labels">
+                <form (submit)="createNewProduct(newProductForm)" #newProductForm="ngForm">
+                    <label>
+                        <b> Name</b>
+                    </label>
+                    <input ngModel type="text" name="product_name" placeholder="product name">
+                    <br>
+                    <label>
+                        <b> Description</b>
+                    </label>
+                    <input type = "text" ngModel name="description" placeholder="description">
+                    <br>
+                    <label>
+                        <b> Qty</b>
+                    </label>
+                    <input ngModel type="number" name="qty" placeholder="1-100">
+                    <br>
+                    <label>
+                        <b> Price</b>
+                    </label>
+                    <input ngModel type="number" name="price" placeholder="$">
+                    <br>
+                    <label>
+                        <b> Sku</b>
+                    </label>
+                    <input ngModel type="number" name="sku" placeholder="SKU">
+                    <br>
+                    <label>
+                        <b> Img</b>
+                    </label>
+                    <input ngModel type="text" name="img" placeholder="img url">
+                    <br>
+                    <label>
+                        <b> Color</b>
+                    </label>
+                    <input ngModel type="text" name="color" placeholder="color">
+                    <!-- <input class='img_field' type="file" name="image" accept="image/*"> -->
+                    <br>
+
+                    <button class="reset_button">RESET</button>
+                    <button class="create_button">ADD</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

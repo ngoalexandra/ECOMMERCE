@@ -1,0 +1,14 @@
+.wrapper{
+    background-color: #BCD4DE;
+    padding: 5px;
+    min-height: 50px;
+}
+
+/* ============= FOOTER ============== */
+div.footer{
+    background-color: #BCD4DE;
+    height: 30px;
+    font-size: 8pt;
+    text-align: center;
+    padding-top: 10px;
+}

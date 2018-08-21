@@ -1,0 +1,38 @@
+
+  <button [routerLink]= "['/admindash']">Back to DashBoard</button>
+  <div class="dashboard_container">
+      <div class="create_product">
+          <div class="create_form">
+              Edit Product
+              <br>
+              <hr>
+              <br>
+              <div class="labels">
+                  <form (submit) = "editProduct()">
+                      name:
+                      <input [(ngModel)] = "productToEdit.product_name" type="text" name="productToEdit.product_name" value = "{{productToEdit.product_name}}" placeholder="product name">
+                      <br> Description:
+                      <textarea [(ngModel)] = "productToEdit.description" name="productToEdit.description" placeholder="say something..."></textarea>
+                      <br> Qty:
+                      <input [(ngModel)] = "productToEdit.qty" type="number" name="productToEdit.qty" placeholder="1-100">
+                      <br> Price:
+                      <input [(ngModel)] = "productToEdit.price" type="number" name="productToEdit.price" placeholder="$">
+                      <br> SKU #:
+                      <input [(ngModel)] = "productToEdit.sku" type="number" name="productToEdit.sku" placeholder="SKU">
+                      <br> image:
+                      <input [(ngModel)] = "productToEdit.img" type="text" name="productToEdit.img" placeholder="img url">
+                      <br> color:
+                      <input [(ngModel)] = "productToEdit.color" type="text" name="productToEdit.color" placeholder="color">
+                      <!-- <input class='img_field' type="file" name="image" accept="image/*"> -->
+                      <br>
+
+                      <button class="reset_button">RESET</button>
+                      <button class="create_button">EDIT</button>
+                  </form>
+                  <p>{{productToEdit| json}}</p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+

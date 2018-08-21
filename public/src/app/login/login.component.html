@@ -1,0 +1,28 @@
+<div class="wrapper">
+  Login Component
+  <br>
+  <a [routerLink]="['/']">Back Home</a>
+  <hr>
+
+  <div class="container">
+    <h2>LOGIN</h2>
+    <form (submit)="login()"> 
+        <label><b>Email</b></label>
+      <br>
+      <input [(ngModel)]="loginUser.email" name="loginUser.email" type="email" name="email" placeholder="Email" required>
+      <br> <label><b>Password</b></label>
+      <br>
+      <input [(ngModel)]="loginUser.password" name="loginUser.password" type="password" name="password" placeholder="Password" required>
+      <br>
+      <br>
+      <button type = "submit">Login</button>
+      <!-- <hr> email: {{ loginUser | json }}
+      <br> pass: {{ loginUser.pass }}
+      <br> -->
+    </form>
+  </div>
+
+
+
+
+</div>

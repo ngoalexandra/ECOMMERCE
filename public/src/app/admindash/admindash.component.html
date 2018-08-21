@@ -1,0 +1,131 @@
+<div class="wrapper">
+admindash component
+<br>
+<a [routerLink]= "['/']">Back to dashboard</a>
+<hr>
+
+
+
+<!-- ============ DASHBOARD ================= -->
+    <div class="dashboard_container">
+
+        <div class="product_list">
+            <br>
+            <h2>Inventory</h2>
+            <button [routerLink] ="['/add']" class="add_button">ADD PRODUCT</button>
+            <hr>
+            <br>
+
+    <!-- ========== SEARCH =========== -->
+        <div class="search">
+            <input (keyup)="onKey($event)" class="search-container" type="text" placeholder="Search...">
+            <button type="submit">
+                Search
+            </button>
+        </div>
+
+        <div class="pages">
+            < 1 | 2 | 3 | 4 | 5 | .... | 14 >
+        </div>
+
+
+    <!-- =========== LEFT SIDE FILTERS ========== -->
+        <div class="left_filters">
+            Filters
+            <br>
+            sort by:
+            <hr>
+
+            <div class="sort">
+                <button (click) = "priceHighToLow()"> Price (Highest - Lowest) ▲</button>
+                <br>
+                <button (click) = "priceByOrder()"> Price (Lowest - Highest) ▼</button>
+            </div>
+
+            <div class="sort">
+                <button (click) = "orderBy()">Product name (A-Z) ▲</button>
+                <br>
+                <button (click) ="orderDesc()">Product name (Z-A) ▼</button>
+            </div>
+
+
+        </div>
+
+
+
+<!-- ========== RIGHT SIDE TABLE ============ -->
+<div class="table">
+
+        <table>
+            <thead>
+                <td>ID</td>
+                <td>SKU</td>
+                <td>Product Name</td>
+                <td>Description</td>
+                <td>Img</td>
+                <td>Qty</td>
+                <td>Price</td>
+                <td>Total</td>
+                <td>Actions</td>
+            </thead>
+            <tbody>
+                <tr *ngFor= "let product of allProducts">
+                    <td>{{product.id}}</td>
+                    <td>{{product.sku}}</td>
+                    <td>{{product.product_name}}</td>
+                    <td>{{product.description}}</td>
+                    <td><img src="images/product_img/7.jpg" alt=""></td>
+                    <td>{{product.qty}}</td>
+                    <td>{{product.price}}</td>
+                    <td>$24</td>
+                    <td>
+                        <button [routerLink] = "['/edit/' , product.id]" class="edit_button">EDIT</button>
+                        <button (click) = "deleteProduct(product.id)" class="delete_button">DELETE</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <div class="pages">
+        < 1 | 2 | 3 | 4 | 5 | .... | 14 >
+    </div>
+
+    <!-- inside product list -->
+  
+
+
+
+        </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
