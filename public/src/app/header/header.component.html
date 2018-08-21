@@ -18,10 +18,17 @@
         <li>
           <a (click)="goToAdminDash()"> Admin Dashboard </a>
         </li>
+        <li>
+            <a (click)="goToAdminDash()"> Cart </a>
+          </li>
       </ul>
 
       <h2>CART:</h2>
-      {{cartCount | json}}
+      {{cart | json}}
+      <br>
+      total items in cart => {{cart_total}}
+      <br>
+      SKUs in cart => {{cart.length}}
       <!-- {{this.cartCount. | json}} -->
 
     <!-- <div *ngIf="isLoggedIn['loggedIn'] === true">

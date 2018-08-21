@@ -29,7 +29,8 @@ export class ProductsComponent implements OnInit {
   //  GET ALL PRODUCTS
   fetchAllProducts(){
     this._productServ.fetchAllProducts().subscribe(res =>{
-      this.allProducts = res['results'];
+      this.allProducts = res['result'];
+      console.log(">>>>>>>>>>>>>>", this.allProducts)
     })
   }
 
@@ -62,19 +63,23 @@ export class ProductsComponent implements OnInit {
 
 //   BUTTON TO ADD TO CART
   addToCartBtn(product_id) {
+    console.log("PRESSED ADD TO CART BUTTON")
+    console.log(">>>>>>>>>>>> PRODUCT ID", product_id)
     for (let i = 0; i < this.cart.length; i++) {
       if (this.cart[i].id === product_id) {
+        console.log("product_id >>>>>>>>", product_id);
         this.cart[i].qty++;
         // update cart value in dataServ
         this._dataService.cart.next(this.cart);
+        console.log("Updated >>>>>>>", this.cart);
         return;
 
-      } else {
-        //  if it's the first time product is being clicked, set qty to 1
-        this.cart.push({ id: product_id, qty: 1 })
-        this._dataService.cart.next(this.cart);
-      }
+      } 
     }
+      //  if it's the first time product is being clicked, set qty to 1
+      console.log("in the else statement")
+      this.cart.push({ id: product_id, qty: 1 })
+      this._dataService.cart.next(this.cart);
   }
 
 // CHECK IF USER IS IN SESSION

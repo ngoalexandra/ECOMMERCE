@@ -17,6 +17,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ProductService } from './product.service';
 import { DataService } from './data.service';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DataService } from './data.service';
     ProductsComponent,
     AdmindashComponent,
     EditProductComponent,
-    AddProductComponent
+    AddProductComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

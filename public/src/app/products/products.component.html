@@ -1,5 +1,11 @@
 <div class="wrapper">
   products component
+  <div class="search">
+        <input (keyup)="onKey($event)" class="search-container" type="text" placeholder="Search...">
+        <button type="submit">
+            Search
+        </button>
+    </div>
   <br>
   <a [routerLink]= "['/']">back to main</a>
   <hr>
@@ -18,9 +24,9 @@
         <hr>
         <br>
         <div class="filter_price">
-            <a href="">price ascending ▲</a>
+            <button (click)= "priceHighToLow()">Price (High - Low) ▲</button>
             <br>
-            <a href="">price descending ▼</a>
+            <button (click)= "priceByOrder()">Price (Low - High) ▼</button>
             <hr>
         </div>
     </div>
@@ -32,125 +38,23 @@
         </div>
         <!-- content -->
         
-        <div class="item">
+        <div *ngFor = "let product of allProducts" class="item">
             <img class="product_img" src="images/product_img/1.jpg" alt="">
             <div class="mid_item">
-                <h2>Product X</h2>
-                <h3>$34.99</h3>
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
+                <h2>{{product.product_name}}</h2>
+                <h3>Price: ${{product.price}}</h3>
                 <img class="stars" src="images/star_rating.png" alt="">
                 <br>
                 <span>QTY: </span><input type="text">
                 <br>
-                <button>ADD TO CART</button>
+                <button (click) = "addToCartBtn(product.id)">ADD TO CART</button>
             </div>
             <div class="right_item">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod laudantium ex sequi nam est atque.
+                Description: {{product.description}}
             </div>
         </div>
         
-        <div class="item">
-            <img class="product_img" src="images/product_img/2.jpg" alt="">
-            <div class="mid_item">
-                <h2>Product X</h2>
-                <h3>$34.99</h3>
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <br>
-                <span>QTY: </span><input type="text">
-                <br>
-                <button>ADD TO CART</button>
-            </div>
-            <div class="right_item">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod laudantium ex sequi nam est atque.
-            </div>
-        </div>
-        
-        <div class="item">
-            <img class="product_img" src="images/product_img/3.jpg" alt="">
-            <div class="mid_item">
-                <h2>Product X</h2>
-                <h3>$34.99</h3>
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <br>
-                <span>QTY: </span><input type="text">
-                <br>
-                <button>ADD TO CART</button>
-            </div>
-            <div class="right_item">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod laudantium ex sequi nam est atque.
-            </div>
-        </div>
-
-        <div class="item">
-            <img class="product_img" src="images/product_img/4.jpg" alt="">
-            <div class="mid_item">
-                <h2>Product X</h2>
-                <h3>$34.99</h3>
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <br>
-                <span>QTY: </span><input type="text">
-                <br>
-                <button>ADD TO CART</button>
-            </div>
-            <div class="right_item">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod laudantium ex sequi nam est atque.
-            </div>
-        </div>
-
-        <div class="item">
-            <img class="product_img" src="images/product_img/5.jpg" alt="">
-            <div class="mid_item">
-                <h2>Product X</h2>
-                <h3>$34.99</h3>
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <br>
-                <span>QTY: </span><input type="text">
-                <br>
-                <button>ADD TO CART</button>
-            </div>
-            <div class="right_item">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod laudantium ex sequi nam est atque.
-            </div>
-        </div>
-
-        <div class="item">
-            <img class="product_img" src="images/product_img/6.jpg" alt="">
-            <div class="mid_item">
-                <h2>Product X</h2>
-                <h3>$34.99</h3>
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <img class="stars" src="images/star_rating.png" alt="">
-                <br>
-                <span>QTY: </span><input type="text">
-                <br>
-                <button>ADD TO CART</button>
-            </div>
-            <div class="right_item">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod laudantium ex sequi nam est atque.
-            </div>
-        </div>
+       
         
         content
         

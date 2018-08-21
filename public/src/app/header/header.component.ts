@@ -14,7 +14,8 @@ export class HeaderComponent implements OnInit {
   allFormattedDates: {};
   public sessionExists: boolean;
   isLoggedIn: any;
-  cartCount: any;
+  cart: any;
+  cart_total: any;
 
   constructor(private _dataServ: DataService, private _userService: UserService, private _router: Router) {
     // we are subscribing in the constructor because one it is constructed we want to automatically grab the data
@@ -22,7 +23,11 @@ export class HeaderComponent implements OnInit {
       this.isLoggedIn = dataServResponse;
     });
     this._dataServ.cart.subscribe((dataServRes)=>{
-      this.cartCount = dataServRes;
+      this.cart = dataServRes;
+      this.cart_total = this.cartItemCount();
+    })
+    this._dataServ.cart_total.subscribe((dataServRes)=>{
+      this.cart_total = dataServRes;
     })
    }
 
@@ -40,6 +45,18 @@ export class HeaderComponent implements OnInit {
   //       }
   //     });
   // }
+
+  cartItemCount(){
+    this.cart_total = 0;
+    // loop through cart
+    for (let i = 0; i <this.cart.length; i++){
+      // the cart count = the qty of each item
+      this.cart_total += this.cart[i]['qty']
+      // always update total in DataService
+      this._dataServ.cart_total.next(this.cart_total);
+    }
+    return this.cart_total;
+  }
 
   destroySession() {
     this._userService.destroySession()
@@ -77,6 +94,10 @@ export class HeaderComponent implements OnInit {
           return;
         }
       });
+  }
+
+  goToCart(){
+    
   }
   
 }
