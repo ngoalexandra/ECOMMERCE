@@ -1,3 +1,5 @@
+
+
 *{
     /* outline: 1px dotted red; */
     margin: 0;
@@ -14,72 +16,6 @@ div.wrapper{
     min-height: 500px;
     max-width: 1300px;
 }
-
-
-/* ============ TOP NAV ============= */
-div.topNav{
-    overflow: hidden;
-    background-color: whitesmoke;
-    min-height: 42px;
-    align-content: center;
-}
-/* ---------- LOGO ---------- */
-    .topNav img{
-        width: 180px;
-        display: inline-block;
-    }
-    /* ---------- SEARCH ------- */
-    .topNav .search{
-        vertical-align: top;
-        margin-top: 10px;
-        margin-left: 20px;
-        display: inline-block;
-    }
-    .topNav input{
-        /* margin-top: 5px; */
-        padding: 6px;
-        border: none;
-        font-size: 17px;
-        width: 400px;
-        border-radius: 15px 15px 15px 15px;
-        -moz-border-radius: 15px;
-        border: solid 1px rgb(250, 173, 68);
-    }
-        .topNav .search img{
-            width: 14px;
-        }
-
-
-
-
-    /* CART============= */
-    .topNav .cart{
-        min-width: 30px;
-        height: 35px;
-        margin-top: 10px;
-        padding: 5px;
-        display: inline-block;
-        vertical-align: top;
-        background-color: white;
-        border-radius: 15px;
-        border: 1px solid rgb(130, 39, 23);
-    }
-        .cart img{
-            /* margin-top: 10px; */
-            display: inline-block;
-            vertical-align: top;
-            margin-top: -2px;
-            height: 30px;
-            width: 30px;
-        }
-        .cart .cart_num{
-            /* margin-top: 10px; */
-            color: rgb(130, 39, 23);
-            display: inline-block;
-            vertical-align: middle;
-            font-size: 20pt;
-            margin-top: -5px;
-        }
 
 
 
@@ -151,6 +87,7 @@ div.content{
         .content .item .right_item{
             display: inline-block;
             vertical-align: top;
+            margin-left: 20px;
             /* background-color: cornsilk; */
             width: 300px;
         }
@@ -231,3 +168,4 @@ div.search {
         color: white;
         /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
     }
+

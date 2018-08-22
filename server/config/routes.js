@@ -57,4 +57,5 @@ app.post("/api/checkOutSession", prodCtrl.checkOutSession);
 app.get("/api/getAllCartProducts", prodCtrl.getAllCartItems);
 
 app.get("/api/:id", prodCtrl.findOne);
+
 }

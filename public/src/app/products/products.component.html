@@ -42,7 +42,8 @@
             <img class="product_img" src="images/product_img/1.jpg" alt="">
             <div class="mid_item">
                 <h2>{{product.product_name}}</h2>
-                <h3>Price: ${{product.price}}</h3>
+                <hr>
+                
                 <img class="stars" src="images/star_rating.png" alt="">
                 <br>
                 <span>QTY: </span><input type="text">
@@ -50,14 +51,10 @@
                 <button (click) = "addToCartBtn(product.id)">ADD TO CART</button>
             </div>
             <div class="right_item">
+                <h3>Price: ${{product.price}}</h3>
                 Description: {{product.description}}
             </div>
         </div>
-        
-       
-        
-        content
-        
         <div class="pages">
             < 1 | 2 | 3 | 4 | 5 | .... | 14 >
         </div>

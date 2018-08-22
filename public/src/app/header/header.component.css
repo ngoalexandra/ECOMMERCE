@@ -5,7 +5,7 @@
 /* ============ TOP NAV ============= */
 div.topNav{
     overflow: hidden;
-    background-color:#BCD4DE;
+    background-color: white;
     min-height: 42px;
     align-content: center;
     font-family: sans-serif;
@@ -32,9 +32,10 @@ div.topNav{
 
 
 .wrapper{
-    background-color: #BCD4DE;
-    padding: 5px;
-    min-height: 50px;
+    background-color: white;
+    min-height: 20px;
+    padding: 0px;
+    vertical-align: top;
 }
 
 table, td{
@@ -51,9 +52,11 @@ thead{
 /* removes bullets from list */
 ul {
     list-style-type: none;
-    background-color: #DEE7E7;
-    margin: 0px;
+    background-color: #64B6AC;
+    margin: 0px auto;
     padding: 0px;
+    color: white;
+    vertical-align: top;
     /* border: 1px solid #555; */
     overflow: hidden;
 
@@ -65,7 +68,7 @@ li {
 }
 
 li a:hover:not(.active) {
-    background-color: #ddd;
+    background-color: white;
 }
 
 
@@ -73,20 +76,20 @@ li a:hover:not(.active) {
 
 li a{
     display: block;
-    color: #000;
+    color: white;
     padding: 8px 16px;
     text-decoration: none;
     text-align: center;
 }
 
 li a:hover{
-    background-color: whitesmoke;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 /* lets the user know which page they are on */
 li a.active {
-    background-color: whitesmoke;
+    background-color: white;
     color: black;
 }
 
@@ -103,10 +106,13 @@ th, td {
 }
 /* every other line is a different color,, makes it stripe looking */
 tr:nth-child(even){
-    background-color: #DEE7E7;
+    background-color: white;
 }
 /*  when we hover over it hightlights the table */
 tr:hover {
-    background-color: silver;
+    background-color: #64B6AC;
 }
+
+
+
 

@@ -22,34 +22,22 @@ export class HeaderComponent implements OnInit {
     this._dataServ.isLoggedIn.subscribe((dataServResponse) => {
       this.isLoggedIn = dataServResponse;
     });
-    this._dataServ.cart.subscribe((dataServRes)=>{
+    this._dataServ.cart.subscribe((dataServRes) => {
       this.cart = dataServRes;
       this.cart_total = this.cartItemCount();
     })
-    this._dataServ.cart_total.subscribe((dataServRes)=>{
+    this._dataServ.cart_total.subscribe((dataServRes) => {
       this.cart_total = dataServRes;
     })
-   }
-
-  ngOnInit() {
-    // this.checkSession();
   }
 
-  // checkSession() {
-  //   this._userService.checkSession()
-  //     .subscribe((res) => {
-  //       if (res['continue'] === true) {
-  //         this.sessionExists = true;
-  //       } else {
-  //         return;
-  //       }
-  //     });
-  // }
+  ngOnInit() {
+  }
 
-  cartItemCount(){
+  cartItemCount() {
     this.cart_total = 0;
     // loop through cart
-    for (let i = 0; i <this.cart.length; i++){
+    for (let i = 0; i < this.cart.length; i++) {
       // the cart count = the qty of each item
       this.cart_total += this.cart[i]['qty']
       // always update total in DataService
@@ -57,6 +45,7 @@ export class HeaderComponent implements OnInit {
     }
     return this.cart_total;
   }
+
 
   destroySession() {
     this._userService.destroySession()
@@ -68,7 +57,6 @@ export class HeaderComponent implements OnInit {
         this._router.navigate(['main']);
       });
   }
-
 
 
   goToProducts() {
@@ -96,8 +84,7 @@ export class HeaderComponent implements OnInit {
       });
   }
 
-  goToCheckout(){
+  goToCheckout() {
     this._router.navigate(['checkout'])
   }
-  
 }

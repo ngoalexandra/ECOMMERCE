@@ -6,8 +6,8 @@
     min-height: 300px;
 }
 
-.login-main{
-    
+.container h3{
+    text-align: center;
 }
 
 input[type=email], input[type=password] {

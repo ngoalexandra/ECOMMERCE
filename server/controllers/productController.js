@@ -10,7 +10,7 @@ module.exports = {
         })
     },
 
-    // Get all products
+    // ============ GET ALL PRODUCT ===================
     getProducts: (req, res) => {
         var sql = `SELECT id, product_name, description, color, qty, price, DATE_FORMAT(created_at, "%d-%c-%Y, %H:%i") as 'date_created', DATE_FORMAT(updated_at, "%d-%c-%Y, %H:%i") as 'date_created', sku, img FROM UserSQL_DB.products ORDER BY id;`;
         connection.query(sql, function (err, result) {
@@ -128,20 +128,37 @@ module.exports = {
     // ------------ Get All Cart Items ------------------
 
     getAllCartItems: (req, res) => {
-        console.log("REQUEST SESSION STRING", req.session.string_of_ids);
-        console.log('productController > getAllCartItems'.yellow);
-        console.log('getAllCartItems >> req.session.cart =>', req.session['cart']);
-
+        var total_price = 0;
+        var final_price = 0;
+        var totalItemsBack = [];
+        // if there isn't a cart, give response back
         if (!req.session['cart']) {
             res.json({ message: 'Error' });
         }
-        // if cart has something in get items
+        // if cart has something, get items through the query
         else if (req.session['cart']) {
-            var sql = `SELECT * FROM UserSQL_DB.products WHERE id in (${req.session.string_of_ids});`
+            var sql = `SELECT * FROM products WHERE id in (${req.session.string_of_ids});`
             connection.query(sql, function (err, results) {
                 if (err) throw err;
-                console.log(results);
-                res.json({ message: "Success", results: results });
+                //  ********  calcuate price of each product  **********
+                // first loop is to loop through the results, second loop is to loop through products in the cart. if the product from the DB matches the PRODUCT ID in cart's session , the total price is the product's price in DB * session's quantity of that item
+                for (var i = 0; i < results.length; i++) {
+                    for (var i = 0; i < req.session['cart'].length; i++) {
+        
+                        if (results[i]['id'] === req.session['cart'][i]['id']) {
+                            total_price = (results[i]['price'] * req.session['cart'][i]['qty'])
+                            final_price += total_price;
+                            totalItemsBack.push({
+                                id: results[i]['id'],
+                                product_name: results[i]['product_name'],
+                                price: results[i]['price'],
+                                qty: req.session['cart'][i]['qty'],
+                                total_price: total_price
+                            })
+                        }
+                    }
+                }
+                res.json({ message: "Success", results: results, totalItemsBack: totalItemsBack , final_price: final_price});
             });
         }
     },

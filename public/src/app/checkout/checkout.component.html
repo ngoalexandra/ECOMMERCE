@@ -1,31 +1,31 @@
 <p>
-  checkout works!
-  {{cart | json}}
-  <hr>
+    checkout works! {{cart | json}}
+    <hr>
 
-  <div class="table">
+    <div class="table">
 
-      <table>
-          <thead>
-              <td>Product Name</td>
-              <td>Qty</td>
-              <td>Price</td>
-              <td>Total</td>
-              <td>Actions</td>
-          </thead>
-          <tbody>
-              <tr *ngFor= "let product of cartProducts">
-                  <td>{{product.product_name}}</td>
-                  <td>QTY</td>
-                  <td>{{product.price}}</td>
-                  <td>Total</td>
-                  <td>
-                      <button [routerLink] = "['/edit/' , product.id]" class="edit_button">EDIT</button>
-                      <button (click) = "deleteProduct(product.id)" class="delete_button">DELETE</button>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
+        <table>
+            <thead>
+                <td>Product Name</td>
+                <td>Qty</td>
+                <td>Price</td>
+                <td>Total</td>
+                <td>Actions</td>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of cartProducts">
+                    <td>{{product.product_name}}</td>
+                    <td>{{product.qty}}</td>
+                    <td>$ {{product.price}}</td>
+                    <td>$ {{product.total_price}}</td>
+                    <td>
+                        <button [routerLink]="['/edit/' , product.id]" class="edit_button">EDIT</button>
+                        <button (click)="deleteProduct(product.id)" class="delete_button">DELETE</button>
+                    </td>
+                </tr>
+            </tbody>
+            Total price: $ {{final_price}}
+            <br> Items in Cart: {{cart_total}}
+        </table>
 
-  </div>
-
+    </div>
