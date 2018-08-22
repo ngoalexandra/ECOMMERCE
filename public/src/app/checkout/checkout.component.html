@@ -1,3 +1,31 @@
 <p>
   checkout works!
-</p>
+  {{cart | json}}
+  <hr>
+
+  <div class="table">
+
+      <table>
+          <thead>
+              <td>Product Name</td>
+              <td>Qty</td>
+              <td>Price</td>
+              <td>Total</td>
+              <td>Actions</td>
+          </thead>
+          <tbody>
+              <tr *ngFor= "let product of cartProducts">
+                  <td>{{product.product_name}}</td>
+                  <td>QTY</td>
+                  <td>{{product.price}}</td>
+                  <td>Total</td>
+                  <td>
+                      <button [routerLink] = "['/edit/' , product.id]" class="edit_button">EDIT</button>
+                      <button (click) = "deleteProduct(product.id)" class="delete_button">DELETE</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+  </div>
+

@@ -40,8 +40,6 @@ app.get("/api/allProducts", prodCtrl.getProducts);
 
 app.delete("/api/:id/deleteProduct", prodCtrl.deleteProduct);
 
-app.get("/api/:id", prodCtrl.findOne);
-
 app.put("/api/:id/edit", prodCtrl.editProduct);
 
 app.get("/api/product/search/:search_str", prodCtrl.sendSearchStr);
@@ -53,4 +51,10 @@ app.get("/api/products/byDesc", prodCtrl.descOrder);
 app.get("/api/products/pricebyOrder", prodCtrl.priceByOrder);
 
 app.get("/api/prodcuts/priceHighToLow", prodCtrl.priceHighToLow);
+
+app.post("/api/checkOutSession", prodCtrl.checkOutSession);
+
+app.get("/api/getAllCartProducts", prodCtrl.getAllCartItems);
+
+app.get("/api/:id", prodCtrl.findOne);
 }

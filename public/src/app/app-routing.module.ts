@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   // {path: '', pathMatch: 'full', redirectTo: '/main'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'admindash', component: AdmindashComponent},
   {path: 'add', component: AddProductComponent},
   {path: 'edit/:id', component: EditProductComponent},
+  {path: 'checkout', component: CheckoutComponent}
 
 ];
 

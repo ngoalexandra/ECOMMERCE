@@ -66,12 +66,17 @@ export class ProductsComponent implements OnInit {
     console.log("PRESSED ADD TO CART BUTTON")
     console.log(">>>>>>>>>>>> PRODUCT ID", product_id)
     for (let i = 0; i < this.cart.length; i++) {
+      // if this item has already been clicked just increase Quantity
       if (this.cart[i].id === product_id) {
         console.log("product_id >>>>>>>>", product_id);
         this.cart[i].qty++;
         // update cart value in dataServ
         this._dataService.cart.next(this.cart);
         console.log("Updated >>>>>>>", this.cart);
+        // once cart has been updated we want to update session
+        this._dataService.updateCartSession({cart: this.cart}).subscribe((res) =>{
+          console.log("Update cart session res", res);
+        })
         return;
 
       } 
@@ -79,7 +84,13 @@ export class ProductsComponent implements OnInit {
       //  if it's the first time product is being clicked, set qty to 1
       console.log("in the else statement")
       this.cart.push({ id: product_id, qty: 1 })
+      // update the cart
       this._dataService.cart.next(this.cart);
+      // get whatever is in cart's session
+      this._dataService.updateCartSession({cart:this.cart}).subscribe((res) =>{
+        console.log("Update cart session res", res);
+      })
+      return;
   }
 
 // CHECK IF USER IS IN SESSION
@@ -107,9 +118,6 @@ export class ProductsComponent implements OnInit {
       this.allProducts = res['results'];
     })
   }
-
-
-
 
 
 

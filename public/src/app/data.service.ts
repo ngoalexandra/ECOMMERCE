@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,16 @@ isLoggedIn = new BehaviorSubject ({
   isAdmin: false
 
 })
+
   
 
-  constructor() { }
+  constructor(private _http: HttpClient) {}
+
+  updateCartSession(cart){
+    console.log("In update cart session")
+    return this._http.post("/api/checkOutSession", cart);
+  }
+
+
+
 }

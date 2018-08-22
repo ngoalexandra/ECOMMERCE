@@ -49,4 +49,10 @@ export class ProductService {
   priceHighToLow(){
     return this._http.get("/api/prodcuts/priceHighToLow");
   }
+
+  getAllCartProds(){
+    console.log("In product service - get all cart products")
+    return this._http.get("/api/getAllCartProducts")
+
+  }
 }

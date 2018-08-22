@@ -96,8 +96,8 @@ export class HeaderComponent implements OnInit {
       });
   }
 
-  goToCart(){
-    
+  goToCheckout(){
+    this._router.navigate(['checkout'])
   }
   
 }
