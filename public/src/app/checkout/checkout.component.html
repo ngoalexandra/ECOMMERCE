@@ -1,5 +1,5 @@
-<p>
-    checkout works! {{cart | json}}
+CHECKOUT
+ <button (click) = "clearCart()">Clear Cart</button>
     <hr>
 
     <div class="table">
@@ -15,7 +15,11 @@
             <tbody>
                 <tr *ngFor="let product of cartProducts">
                     <td>{{product.product_name}}</td>
-                    <td>{{product.qty}}</td>
+                    <td>
+                        <button (click)="decreaseQty(product.id)">-</button>
+                        {{product.qty}}
+                        <button (click)="addCartQty(product.id)">+</button>
+                    </td>
                     <td>$ {{product.price}}</td>
                     <td>$ {{product.total_price}}</td>
                     <td>

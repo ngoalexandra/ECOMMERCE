@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   // {path: '', pathMatch: 'full', redirectTo: '/main'},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'admindash', component: AdmindashComponent},
   {path: 'add', component: AddProductComponent},
   {path: 'edit/:id', component: EditProductComponent},
-  {path: 'checkout', component: CheckoutComponent}
+  {path: 'checkout', component: CheckoutComponent},
+  {path: 'users', component: UsersComponent}
 
 ];
 

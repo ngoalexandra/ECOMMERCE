@@ -1,56 +1,64 @@
 <div class="wrapper">
 
-    <br>
-    <div class="nav">
-      <ul>
+  <br>
+  <div class="nav">
+    <ul>
 
-        <li>
-          <a class = "active" [routerLink]="['']">Home</a>
-        </li>
-
-        <li>
-          <a [routerLink]="['/login']">Login</a>
-        </li>
-
-        <li>
-          <a [routerLink]="['/register']">Register</a>
-        </li>
-
-        <li>
-          <a (click)="goToProducts()"> Products </a>
-        </li>
-
+      <span *ngIf="isLoggedIn['isAdmin'] === true">
         <li>
           <a (click)="goToAdminDash()"> Admin Dashboard </a>
         </li>
+      </span>
 
+      <span *ngIf="isLoggedIn['isAdmin'] === true">
         <li>
-            <a (click)="goToCheckout()"> Cart ({{cart_total}})
-               </a>
-          </li>
-          
-      </ul>
+          <a [routerLink]="['/users']"> Registered Users </a>
+        </li>
+      </span>
 
-      <!-- <h2>CART:</h2>
+      <li>
+        <a class="active" [routerLink]="['']">Home</a>
+      </li>
+
+      <li>
+        <a [routerLink]="['/login']">Login</a>
+      </li>
+
+      <li>
+        <a [routerLink]="['/register']">Register</a>
+      </li>
+
+      <li>
+        <a (click)="goToProducts()"> Products </a>
+      </li>
+
+      <li>
+        <a (click)="goToCheckout()"> Cart ({{cart_total}})
+        </a>
+      </li>
+
+    </ul>
+
+    <!-- <h2>CART:</h2>
       {{cart | json}}
       <br>
       total items in cart => {{cart_total}}
       <br>
       SKUs in cart => {{cart.length}} -->
-      <!-- {{this.cartCount. | json}} -->
+    <!-- {{this.cartCount. | json}} -->
 
     <!-- <div *ngIf="isLoggedIn['loggedIn'] === true">
       <button (click)="destroySession()"> CLEAR SESSION / LOGOUT </button>
     </div> -->
 
-  <!-- ============= TOP NAV BAR ============== -->
-  <div class="topNav">
+    <!-- ============= TOP NAV BAR ============== -->
+    <div class="topNav">
       <img src="images/t_logo.png" alt="">
       <div class="center_title">
       </div>
-      <span *ngIf = "isLoggedIn['loggedIn'] === true">
-      <button (click)="destroySession()"> Log out</button>
-    </span>
+      <span *ngIf="isLoggedIn['loggedIn'] === true">
+        <button (click)="destroySession()"> Log out</button>
+      </span>
+    </div>
+
   </div>
-  
-</div>

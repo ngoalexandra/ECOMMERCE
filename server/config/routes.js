@@ -1,7 +1,7 @@
-// var users = require('../controllers/users.js');
-// const ctrl = require("./../controllers/userController.js");
+
 const ctrl = require("./../controllers/userController.js");
 const prodCtrl = require("./../controllers/productController.js");
+const cartCtrl = require("./../controllers/cartController");
 
 console.log("SERVER > routes.js".blue);
 
@@ -52,10 +52,14 @@ app.get("/api/products/pricebyOrder", prodCtrl.priceByOrder);
 
 app.get("/api/prodcuts/priceHighToLow", prodCtrl.priceHighToLow);
 
-app.post("/api/checkOutSession", prodCtrl.checkOutSession);
 
-app.get("/api/getAllCartProducts", prodCtrl.getAllCartItems);
+// ==================== CART CTRL ============================
+app.post("/api/checkOutSession", cartCtrl.checkOutSession);
+
+app.get("/api/getAllCartProducts", cartCtrl.getAllCartItems);
 
 app.get("/api/:id", prodCtrl.findOne);
+
+app.get("/api/product/clearCartSession", cartCtrl.clearSession)
 
 }

@@ -10,13 +10,17 @@ export class DataService {
   cart = new BehaviorSubject ([
 
   ])
+  
   cart_total = new BehaviorSubject(null);
+
+
 
 isLoggedIn = new BehaviorSubject ({
   loggedIn: false,
   isAdmin: false
 
 })
+
 
   
 
@@ -25,6 +29,10 @@ isLoggedIn = new BehaviorSubject ({
   updateCartSession(cart){
     console.log("In update cart session")
     return this._http.post("/api/checkOutSession", cart);
+  }
+
+  clearCartSession(){
+    return this._http.get("/api/product/clearCartSession")
   }
 
 
