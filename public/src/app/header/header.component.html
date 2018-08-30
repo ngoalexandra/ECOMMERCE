@@ -6,7 +6,7 @@
 
       <span *ngIf="isLoggedIn['isAdmin'] === true">
         <li>
-          <a (click)="goToAdminDash()"> Admin Dashboard </a>
+          <a [routerLink]= "['admindash']"> Admin Dashboard </a>
         </li>
       </span>
 

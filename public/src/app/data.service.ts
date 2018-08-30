@@ -35,6 +35,4 @@ isLoggedIn = new BehaviorSubject ({
     return this._http.get("/api/product/clearCartSession")
   }
 
-
-
 }

@@ -51,15 +51,23 @@ export class CheckoutComponent implements OnInit {
         return;
       }
       else if (res['message'] === "Success") {
-        // our products in the cart and what we get as a response from the server
-        this.cartProducts = res['totalItemsBack']
         // then we update the cart in the service
-        this._dataService.cart.next(this.cartProducts);
+        this._dataService.cart.next(res['totalItemsBack']);
+
+        // our products in the cart and what we get as a response from the server
+        // this.cartProducts = res['totalItemsBack'];
+        this.cartProducts = this.cart
+        console.log("%cCURRENT CART >>>>>>>>>>>>>", 'color:green', this.cartProducts)
+
+        // then we update the cart in the service
+        this._dataService.cart.next(res['totalItemsBack']);
+
         // then we set the final price
         this.final_price = res['final_price']
       }
     })
   }
+
 
   // ================ CLEAR CART =======================
   clearCart() {
@@ -120,17 +128,17 @@ export class CheckoutComponent implements OnInit {
           // then update the cart session in data service
           this._dataService.updateCartSession({ cart: this.cart }).subscribe(serverRes => {
             console.log("when we updated cart in session", serverRes);
-            // console.log("CART WHEN DECREASING QUANTITY >>>>>>>>>>", this.cart)
-            // this.cart_total = this.cart[i].qty
-            // console.log("UPDATED CART TOTAL AFTER DECREASE QTY>>>>>>>>>", this.cart_total);
-            // this._dataService.cart_total.next(this.cart_total);
-             // get all cart products after we have made changes
             this.getAllInSession();
           })
         } else if (this.cart[i].qty === 1) {
           this.zeroConfirmation = confirm("Are you sure you want to remove last item in cart?");
-          if (this.zeroConfirmation === true){
+          if (this.zeroConfirmation === true) {
             console.log("Last item was removed");
+            this._productService.removeFromSession(this.cart[i].id).subscribe(res => {
+              console.log("****** response from remove session >>>>>", res);
+              this._dataService.cart.next(res['revisedCart'])
+              this.getAllInSession();
+            })
           }
         }
         return;
@@ -139,4 +147,3 @@ export class CheckoutComponent implements OnInit {
   }
   // ================== DECREASE DTY OF ITEM ===================
 }
-

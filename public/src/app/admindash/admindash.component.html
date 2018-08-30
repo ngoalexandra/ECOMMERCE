@@ -1,8 +1,8 @@
 <div class="wrapper">
 admindash component
 <br>
-<a [routerLink]= "['/']">Back to dashboard</a>
-<hr>
+<a [routerLink]= "['/']">Back Home</a>
+
 
 
 
@@ -12,8 +12,6 @@ admindash component
         <div class="product_list">
             <br>
             <h2>Inventory</h2>
-            <button [routerLink] ="['/add']" class="add_button">ADD PRODUCT</button>
-            <hr>
             <br>
 
     <!-- ========== SEARCH =========== -->
@@ -84,6 +82,8 @@ admindash component
                     </td>
                 </tr>
             </tbody>
+            <button [routerLink] ="['/add']" class="add_button">ADD PRODUCT</button>
+
         </table>
 
     </div>

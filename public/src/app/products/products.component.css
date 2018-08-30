@@ -29,12 +29,12 @@ div.left_filter{
     background-color: whitesmoke;
     display: inline-block;
     vertical-align: top;
-    width: 200px;
+    width: 150px;
     height: 500px;
     padding: 10px;
 }
     .left_filter .filter_price{
-        background-color: whitesmoke;
+        background-color: white;
         width: auto;
         /* height: 100px; */
         height: auto;
@@ -43,28 +43,28 @@ div.left_filter{
 
 /* ============ MAIN CONTENT & PAGES ========= */
 div.content{
-    background-color: whitesmoke;
+    background-color: white;
     display: inline-block;
     vertical-align: top;
-    width: 750px;
+    width: 700px;
     min-height: 600px;
 }
 
     .content .pages{
         margin-top: 10px;
         margin-bottom: 10px;
-        background-color:#BCD4DE;
+        background-color: rgb(254, 137, 98);
         text-align: center;
     }
 
     div.item{
         border-radius: 15px;
         margin: 10px;
-        background-color: whitesmoke;
+        background-color: white;
         opacity: 0.8;
         border-bottom: 1px solid #BCD4DE;
         min-height: 60px;
-        width: 750px;
+        width: 700px;
     }
     /* --------- PRODUCT IMG --------- */
         .content .item .product_img{
@@ -100,7 +100,7 @@ div.content{
 /* ====== SEARCH BUTTON ========= */
 div.search {
     display: block;
-    background-color:#BCD4DE;
+    background-color:rgb(254, 137, 98);
     /* width: 800px; */
     border-radius: 8px;
     width: 30%;
@@ -123,48 +123,35 @@ div.search {
         border-radius: 15px;
         text-align: center;
         font-size: 18px;
-        border: 2px solid #BCD4DE; 
+        border: 2px solid rgb(254, 137, 98); 
         background-color: white; /* Green */
         /* webkit-transition-duration: 0.4s; Safari */
         transition-duration: 0.4s;
     }
         button.addToCartBtn:hover {
-            background-color: #BCD4DE; /* Green */
+            background-color: rgb(254, 137, 98); /* Green */
             color: white;
             /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
         }
     
-    /* ========== USER BUTTON LOGIN REGISTER ===== */
-        button.logreg{
-            vertical-align: top;
-            margin-top: 8px;
-            background-color: white;
-            border: 1px solid rgb(130, 39, 23);
-            border-radius: 15px;
-            height: 40px;
-            transition-duration: 0.4s;
-        }
-            button.logreg:hover{
-                background-color: rgb(250, 173, 68);
-            }
 
 /* ============ each product ADD to CARD BUTTON */
 .item button{
     margin-top: 5px;
     margin-bottom: 5px;
-    background-color: aqua;
+    background-color: white;
     padding: 5px 15px;
     border: none;
     border-radius: 10px;
     text-align: center;
     font-size: 14px;
-    border: 2px solid #BCD4DE; 
+    border: 2px solid rgb(254, 137, 98); 
     background-color: white; /* Green */
     /* webkit-transition-duration: 0.4s; Safari */
     transition-duration: 0.4s;
 }
     .item button:hover {
-        background-color: #BCD4DE; /* Green */
+        background-color: rgb(254, 137, 98); /* Green */
         color: white;
         /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
     }

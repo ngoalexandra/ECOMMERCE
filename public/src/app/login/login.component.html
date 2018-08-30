@@ -1,23 +1,54 @@
 <div class="wrapper">
-  Login Component
-  <br>
+
   <a [routerLink]="['/']">Back Home</a>
-  <hr>
+
 
   <div class="container">
     <h3>LOGIN</h3>
-    <hr>
-    <form (submit)="login()"> 
-      <label><b>Email</b></label>
+
+    <form (submit)="login()">
+      <label>
+        <b>Email</b>
+      </label>
       <br>
-      <input [(ngModel)]="loginUser.email" #nameUser = "ngModel" name="loginUser.email" type="email" name="email" placeholder="Email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-      <!-- <div *ngIf="nameUser.errors"> </div> -->
-      <br> <label><b>Password</b></label>
+
+      <input [(ngModel)]="loginUser.email" #email="ngModel" name="loginUser.email" type="email" name="email" placeholder="Email"
+        required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" minlength="4">
+      <!-- EMAIL VALIDATIONS -->
+      <div *ngIf="email.errors && (email.dirty || email.touched)">
+
+        <p class="errors" *ngIf="email.errors.required">
+          Email cannot be empty.
+        </p>
+
+        <p class="errors" *ngIf="email.errors.minlength">
+          Email must be more than 4 characters.
+        </p>
+
+      </div>
+
+
       <br>
-      <input [(ngModel)]="loginUser.password" name="loginUser.password" type="password" name="password" placeholder="Password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$">
+      <label>
+        <b>Password</b>
+      </label>
       <br>
+      <input [(ngModel)]="loginUser.password" name="loginUser.password" type="password" name="password" placeholder="Password"
+        required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$" minlength="5" #password="ngModel">
       <br>
-      <button type = "submit">Login</button>
+          <!-- PASSWORD VALIDATIONS -->
+          <div *ngIf="password.errors && (password.dirty || password.touched)">
+
+              <p class="errors" *ngIf="password.errors.required">
+                Password cannot be empty.
+              </p>
+      
+              <p class="errors" *ngIf="password.errors.minlength">
+                Password must contain at least 5 characters.
+              </p>
+              
+            </div>
+      <button type="submit">Login</button>
       <!-- <hr> email: {{ loginUser | json }}
       <br> pass: {{ loginUser.pass }}
       <br> -->

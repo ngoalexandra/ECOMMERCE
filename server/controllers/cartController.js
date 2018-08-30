@@ -1,6 +1,6 @@
 module.exports = {
-     // ============== data for cart's session ======================
-     checkOutSession: (req, res) => {
+    // ============== DATA FOR CART SESSION ======================
+    checkOutSession: (req, res) => {
         console.log(">>>>>>>>> req.body", req.body);
         // for the req, it is recieving the cart object (this.cart) being sent from the front-end . In the component.ts 
         var prod_id_arr = [];
@@ -32,7 +32,7 @@ module.exports = {
     },
 
 
-    // ------------ Get All Cart Items ------------------
+    // ================= GET ALL CART ITEMS ====================
 
     getAllCartItems: (req, res) => {
         var total_price = 0;
@@ -51,7 +51,7 @@ module.exports = {
                 // first loop is to loop through the results, second loop is to loop through products in the cart. if the product from the DB matches the PRODUCT ID in cart's session , the total price is the product's price in DB * session's quantity of that item
                 for (var i = 0; i < results.length; i++) {
                     for (var i = 0; i < req.session['cart'].length; i++) {
-        
+
                         if (results[i]['id'] === req.session['cart'][i]['id']) {
                             total_price = (results[i]['price'] * req.session['cart'][i]['qty'])
                             final_price += total_price;
@@ -65,7 +65,7 @@ module.exports = {
                         }
                     }
                 }
-                res.json({ message: "Success", results: results, totalItemsBack: totalItemsBack , final_price: final_price});
+                res.json({ message: "Success", results: results, totalItemsBack: totalItemsBack, final_price: final_price });
             });
         }
     },
@@ -74,8 +74,27 @@ module.exports = {
     clearSession: (req, res) => {
         req.session['cart'] = null;
         console.log("***************", req.session['cart'])
-        res.json({message: "Successfully cleared cart" });
-    }
+        res.json({ message: "Successfully cleared cart" });
+    },
 
-    
+    // =================== REMOVE FROM SESSION =====================
+
+    removeFromSession: (req, res) => {
+        // the req is the cart we are getting back from the component
+        console.log("Cart from the front-end".red, req.session['cart']);
+        console.log("this is what is in the params >>>>>>".green, req.params)
+        console.log("id in params >>>>>>".blue, req.params.id)
+        // when we filter, we are removing that specific item with that id from the cart
+        if (req.session['cart']){
+            console.log("THERE IS A CART >>>>>>>>>", req.session.cart)
+            req.session['cart'] = req.session['cart'].filter(itemId => itemId.id != req.params.id )
+            console.log("CART SESSION AFTER FILTER >>>>>>>>>>>", req.session.cart)
+            console.log("current length >>>>>>>>>>>".red, req.session.cart.length)
+
+        }
+        res.json({message: "Item has been removed from cart", revisedCart: req.session['cart']});
+
+    }
 }
+
+

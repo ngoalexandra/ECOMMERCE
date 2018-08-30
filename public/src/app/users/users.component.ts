@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from './../user.service';
 
 @Component({
   selector: 'app-users',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
-  constructor() { }
+allUsers: any;
+allFormattedDates: {};
+  public sessionExists: boolean;
+  constructor(private _userService: UserService) { }
 
   ngOnInit() {
+    this.fetchAllUsers();
+  }
+
+  fetchAllUsers(){
+    this._userService.fetchAllUsers().subscribe(res => {
+      this.allUsers = res['result']
+    })
   }
 
 }

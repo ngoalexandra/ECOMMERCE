@@ -62,4 +62,6 @@ app.get("/api/:id", prodCtrl.findOne);
 
 app.get("/api/product/clearCartSession", cartCtrl.clearSession)
 
+app.get("/api/products/removeItemSession/:id", cartCtrl.removeFromSession)
+
 }

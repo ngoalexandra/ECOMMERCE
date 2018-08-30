@@ -76,7 +76,7 @@ export class HeaderComponent implements OnInit {
   goToAdminDash() {
     this._userService.checkIfAdmin()
       .subscribe((res) => {
-        if (res['powerLevel'] > 9000) {
+        if (res['message'] === "IS ADMIN") {
           this._router.navigate(['admindash']);
         } else {
           return;

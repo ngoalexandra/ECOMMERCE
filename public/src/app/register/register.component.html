@@ -1,36 +1,92 @@
 <div class="wrapper">
-  register.component
-  <br>
-  <a [routerLink]="['/']">back to main</a>
-  <hr>
+
+  <a [routerLink]="['/']">Back Home</a>
+
   <div class="container">
     <h3>REGISTER</h3>
-    <hr>
+
     <form (submit)="submitNewUser(newFormUser)" #newFormUser="ngForm">
       <label>
+        <!-- FIRST NAME -->
         <b>First Name</b>
       </label>
-      <input type="text" ngModel name="first_name" placeholder="First Name">
+      <input type="text" ngModel name="first_name" placeholder="First Name" required minlength="2" #name="ngModel">
+      <div *ngIf="name.errors && (name.dirty || name.touched)">
+        <p *ngIf="email.errors.required">
+          Name cannot be empty.
+        </p>
+
+        <p *ngIf="email.errors.minlength">
+          Name must be longer than 2 characters.
+        </p>
+      </div>
       <br>
+
+      <!-- LAST NAME -->
       <label>
         <b>Last Name</b>
       </label>
-      <input type="text" ngModel name="last_name" placeholder="Last Name">
+      <input type="text" ngModel name="last_name" placeholder="Last Name" #last="ngModel" required minlength="2">
+
+      <div *ngIf="last.errors && (last.dirty || last.touched)">
+
+        <p *ngIf="last.errors.required">
+          Last name cannot be empty.
+        </p>
+
+        <p *ngIf="last.errors.minlength">
+          Last name must be longer than 2 characters.
+        </p>
+      </div>
       <br>
+
+    <!-- EMAIL -->
       <label>
         <b>Email</b>
       </label>
-      <input type="email" ngModel name="email" placeholder="email">
+      <input type="email" ngModel name="email" placeholder="email" #email="ngModel" minlength="4">
+
+      <div *ngIf="email.errors && (email.dirty || email.touched)">
+
+        <p *ngIf="email.errors.required">
+          Email feild cannot be empty.
+        </p>
+
+        <p *ngIf="email.errors.minlength">
+          Email must be longer than 4 characters.
+        </p>
+      </div>
       <br>
+    <!-- PASSWORD -->
       <label>
         <b>Password</b>
       </label>
-      <input type="password" ngModel name="password" placeholder="password">
+      <input type="password" ngModel name="password" placeholder="password" required minlength="5" #pw="ngModel">
+
+      <div *ngIf="pw.errors && (pw.dirty || pw.touched)">
+
+        <p *ngIf="pw.errors.required">
+          Please enter a password
+        </p>
+
+        <p *ngIf="email.errors.minlength">
+          Password must be longer than 5 characters.
+        </p>
+      </div>
       <br>
+    <!-- CONFIRMATION PW -->
       <label>
         <b>Confirm Password</b>
       </label>
-      <input type="password" ngModel name="pass2" placeholder="Confirm Password">
+      <input type="password" ngModel name="pass2" placeholder="Confirm Password" required #cPW="ngModel">
+
+      <div *ngIf="cPW.errors && (cPW.dirty || cPW.touched)">
+
+        <p *ngIf="cPW.errors.required">
+          Confirmation password field must be filled and must match password.
+        </p>
+
+      </div>
       <br>
       <button type="submit">Register</button>
 

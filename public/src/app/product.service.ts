@@ -55,4 +55,7 @@ export class ProductService {
     return this._http.get("/api/getAllCartProducts")
 
   }
+  removeFromSession(id){
+    return this._http.get("/api/products/removeItemSession/" + id);
+  }
 }

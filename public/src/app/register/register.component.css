@@ -8,6 +8,9 @@
 }
 .container h3{
     text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid rgb(254, 137, 98); 
 }
 
 input[type=email], input[type=password], input[type=text] {
@@ -20,16 +23,17 @@ input[type=email], input[type=password], input[type=text] {
 }
 
 button {
-    background-color: #BCD4DE;
+    background-color: rgb(254, 137, 98);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     cursor: pointer;
     width: 100%;
+    box-shadow: 8px 8px 5px #cfcbcb;
 }
 
 button:hover {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .container {

@@ -9,26 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-
-  allUsers: {};
-  allFormattedDates: {};
-  public sessionExists: boolean;
-
   constructor(private _userService: UserService, private _router: Router) { }
 
   ngOnInit() {
-    console.log('=== MAIN.COMPONENT.TS LOADED ===');
-    this.fetchAllUsers();
+
   }
-  
-  fetchAllUsers() {
-    this._userService.fetchAllUsers().subscribe(res => {
-      this.allUsers = res['result'];
-    });
-  }
-
-
-
 
 
 } // -- EOF
