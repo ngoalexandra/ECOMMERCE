@@ -9,16 +9,27 @@ module.exports = {
             if (err) throw err;
             if (email.length > 0) {
                 res.json({ message: "Email already exists", success: false });
-            } else {
+            } if (req.body.password.length > 0) {
+                console.log(req.body.password);
+                console.log(req.body.password.length)
                 console.log("This email is unique, proceed")
                 bcrypt.hash(req.body.password, 10, function (error, hash) {
-                    var sql = `INSERT INTO UserSQL_DB.users (first_name, last_name, email, password, created_at, updated_at, admin) VALUES ('${req.body.first_name}', '${req.body.last_name}', '${req.body.email}', '${hash}', NOW(), NOW(), '0');`;
-                    connection.query(sql, function (err, result) {
-                        if (err) throw err;
-                        res.json({ message: 'ok', success: true });
-                    });
+                    console.log("PASSWORD FROM THE BODY >>>>>>>>", req.body.password)
+                    if (error) {
+                        console.log("THERE WAS AN ERROR WHILE HASHING PW", error);
+                        res.json({ message: "Error", error: error, success: false })
+                    } else {
+                        console.log("HASHED PASSWORD >>>>>>>>>>", hash) 
+                        var sql = `INSERT INTO UserSQL_DB.users (first_name, last_name, email, password, created_at, updated_at, admin) VALUES ('${req.body.first_name}', '${req.body.last_name}', '${req.body.email}', '${hash}', NOW(), NOW(), '0');`;
+                        connection.query(sql, function (err, result) {
+                            if (err) throw err;
+                            res.json({ message: 'ok', success: true });
+                        });
+                    }
                 })
             }
+            res.json({message: "fail", success: false})
+    
         });
 
     },
@@ -130,7 +141,7 @@ module.exports = {
         req.session.destroy(function (err) {
             if (err) throw err;
             console.log('successfully CLEARED SESSION');
-            res.json({message: "Success"});
+            res.json({ message: "Success" });
         });
         console.log('req.session after destroy =>'.yellow, req.session);
     }
