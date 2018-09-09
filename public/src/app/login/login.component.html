@@ -17,12 +17,16 @@
       <!-- EMAIL VALIDATIONS -->
       <div *ngIf="email.errors && (email.dirty || email.touched)">
 
-        <p class="errors" *ngIf="email.errors.required">
+        <p id="errors" *ngIf="email.errors.required">
           Email cannot be empty.
         </p>
 
-        <p class="errors" *ngIf="email.errors.minlength">
+        <p id="errors" *ngIf="email.errors.minlength">
           Email must be more than 4 characters.
+        </p>
+
+        <p id="errors" *ngIf="email.errors.pattern">
+          Email format is incorrect. EX: email_123@yahoo.com
         </p>
 
       </div>
@@ -39,12 +43,16 @@
           <!-- PASSWORD VALIDATIONS -->
           <div *ngIf="password.errors && (password.dirty || password.touched)">
 
-              <p class="errors" *ngIf="password.errors.required">
+              <p id="errors" *ngIf="password.errors.required">
                 Password cannot be empty.
               </p>
       
-              <p class="errors" *ngIf="password.errors.minlength">
+              <p id="errors" *ngIf="password.errors.minlength">
                 Password must contain at least 5 characters.
+              </p>
+
+              <p id="errors" *ngIf="password.errors.pattern">
+                Password must contain at least 1 uppercase letter, 1 lowercase letter and a number.
               </p>
               
             </div>

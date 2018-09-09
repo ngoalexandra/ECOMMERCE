@@ -41,6 +41,7 @@ export class RegisterComponent implements OnInit {
           } else {
             console.log('invalid result - server error not saved');
             alert("Registration was unsuccessful")
+            this._router.navigate(['/register'])
           }
         });
     } else {

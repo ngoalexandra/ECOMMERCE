@@ -45,3 +45,8 @@ button:hover {
     border-radius: 10px;
 }
 
+/* VALIDATION ERRORS */
+
+#errors {
+    color: red;
+}

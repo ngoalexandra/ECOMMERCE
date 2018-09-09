@@ -1,5 +1,4 @@
 import { UserService } from './../user.service';
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DataService } from '../data.service';
@@ -14,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginUser: {};
   public isLoggedIn: any;
 
-  constructor(private _dataService: DataService, private _userService: UserService, private _route: ActivatedRoute, private _router: Router) { 
+  constructor(private _dataService: DataService, private _userService: UserService, private _route: ActivatedRoute, private _router: Router) {
     this._dataService.isLoggedIn.subscribe((dataServResponse) => {
       this.isLoggedIn = dataServResponse;
     });
@@ -35,45 +34,47 @@ export class LoginComponent implements OnInit {
   goToAdmin() {
     // this.checkIfAdmin();
     this._router.navigate(['admindash'])
-   
+
   }
 
   goToProducts() {
     this._router.navigate(['products']);
-    // .then(nav => {
-    //   console.log('nav success?', nav); // true if nav is successful
-    // }, err => {
-    //   console.log('nav success?', err); // when there is an error
-    // });
   }
 
-  checkValidations(){
-    
+  checkValidations() {
+
   }
 
   checkUser(potentialUser: any) {
     this._userService.checkUser(potentialUser)
-    .subscribe((res: any) => {
-      if (res.canLogin === true) {
-        if (res.admin === true ) {
-          this.isLoggedIn['loggedIn'] = true;
-          this.isLoggedIn['isAdmin'] = true;
-          // .next is updating values
-          this._dataService.isLoggedIn.next(this.isLoggedIn)
-          alert('ADMIN Logged In!');
-          this.goToAdmin();
-        } else {
-          this.isLoggedIn['loggedIn'] = true;
-          this.isLoggedIn['isAdmin'] = false;
-          this._dataService.isLoggedIn.next(this.isLoggedIn)
-          alert('USER logged in!');
-          this.goToProducts();
+      .subscribe((res: any) => {
+        console.log("SERVER RES WHILE LOGGING IN>>>>>", res);
+        if (res.canLogin === true) {
+          console.log("User can login >>>>>>>>>>>")
+          if (res.admin === true) {
+            console.log("User is ADMIN >>>>>>>>>>>")
+            this.isLoggedIn['loggedIn'] = true;
+            this.isLoggedIn['isAdmin'] = true;
+            // .next is updating values
+            this._dataService.isLoggedIn.next(this.isLoggedIn)
+            alert('ADMIN Logged In!');
+            this.goToAdmin();
+          } else if (res.admin !== true) {
+            console.log("User is not ADMIN >>>>>>>>>>>")
+            this.isLoggedIn['loggedIn'] = true;
+            this.isLoggedIn['isAdmin'] = false;
+            this._dataService.isLoggedIn.next(this.isLoggedIn)
+            alert('USER logged in!');
+            this.goToProducts();
+          }
+          console.log("before else statement >>>>>>>>>>")
         }
-      } else {
-        alert('FAIL');
-        return;
-      }
-    });
+        else {
+          console.log("FAILED LOGIN >>>>>>>>>>>>")
+          alert('FAIL. Information entered is either incorrect or must register first');
+          return;
+        }
+      });
   }
 
 

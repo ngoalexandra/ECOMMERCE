@@ -10,14 +10,18 @@
         <!-- FIRST NAME -->
         <b>First Name</b>
       </label>
-      <input type="text" [(ngModel)]="newUser.first_name" name="first_name" placeholder="First Name" required minlength="2" #name="ngModel">
+      <input type="text" [(ngModel)]="newUser.first_name" name="first_name" placeholder="First Name" required pattern="[a-zA-Z ]*" minlength="2" #name="ngModel">
       <div *ngIf="name.errors && (name.dirty || name.touched)">
-        <p *ngIf="email.errors.required">
+        <p id = "errors" *ngIf="name.errors.required">
           Name cannot be empty.
         </p>
 
-        <p *ngIf="email.errors.minlength">
+        <p id = "errors" *ngIf="name.errors.minlength">
           Name must be longer than 2 characters.
+        </p>
+
+        <p id = "errors" *ngIf="name.errors.pattern">
+          Name can only contain letters A-Z
         </p>
       </div>
       <br>
@@ -26,16 +30,20 @@
       <label>
         <b>Last Name</b>
       </label>
-      <input type="text" [(ngModel)]="newUser.last_name"  name="last_name" placeholder="Last Name" #last="ngModel" required minlength="2">
+      <input type="text" [(ngModel)]="newUser.last_name"  name="last_name" placeholder="Last Name" #last="ngModel" required pattern="[a-zA-Z ]*" minlength="2">
 
       <div *ngIf="last.errors && (last.dirty || last.touched)">
 
-        <p *ngIf="last.errors.required">
+        <p id = "errors" *ngIf="last.errors.required">
           Last name cannot be empty.
         </p>
 
-        <p *ngIf="last.errors.minlength">
+        <p id = "errors" *ngIf="last.errors.minlength">
           Last name must be longer than 2 characters.
+        </p>
+
+        <p id = "errors" *ngIf="last.errors.pattern">
+          Last name can only contain letters A-Z
         </p>
       </div>
       <br>
@@ -44,16 +52,20 @@
       <label>
         <b>Email</b>
       </label>
-      <input type="email" [(ngModel)]="newUser.email"  name="email" placeholder="email" #email="ngModel" minlength="4" required>
+      <input type="email" [(ngModel)]="newUser.email"  name="email" placeholder="email" #email="ngModel" minlength="4" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 
       <div *ngIf="email.errors && (email.dirty || email.touched)">
 
-        <p *ngIf="email.errors.required">
+        <p id = "errors"  *ngIf="email.errors.required">
           Email feild cannot be empty.
         </p>
 
-        <p *ngIf="email.errors.minlength">
+        <p id = "errors" *ngIf="email.errors.minlength">
           Email must be longer than 4 characters.
+        </p>
+
+        <p id="errors" *ngIf="email.errors.pattern">
+          Email format is incorrect. EX: email_123@yahoo.com
         </p>
       </div>
 
@@ -63,16 +75,20 @@
       <label>
         <b>Password</b>
       </label>
-      <input type="password" [(ngModel)]="newUser.password"  name="password" placeholder="password" required minlength="5" #pw="ngModel">
+      <input type="password" [(ngModel)]="newUser.password"  name="password" placeholder="password" minlength="5" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$" #pw="ngModel">
 
       <div *ngIf="pw.errors && (pw.dirty || pw.touched)">
 
-        <p *ngIf="pw.errors.required">
+        <p id = "errors" *ngIf="pw.errors.required">
           Please enter a password
         </p>
 
-        <p *ngIf="email.errors.minlength">
+        <p id = "errors" *ngIf="pw.errors.minlength">
           Password must be longer than 5 characters.
+        </p>
+
+        <p id="errors" *ngIf="pw.errors.pattern">
+          Password must contain at least 1 uppercase letter, 1 lowercase letter and a number.
         </p>
       </div>
       <br>
@@ -84,8 +100,8 @@
 
       <div *ngIf="cPW.errors && (cPW.dirty || cPW.touched)">
 
-        <p *ngIf="cPW.errors.required">
-          Confirmation password field must be filled and must match password.
+        <p id = "errors" *ngIf="cPW.errors.required">
+          Confirmation password field must be filled and must match password above.
         </p>
 
       </div>

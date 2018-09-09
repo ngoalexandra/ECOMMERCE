@@ -8,27 +8,26 @@ module.exports = {
         connection.query(email_query, function (err, email) {
             if (err) throw err;
             if (email.length > 0) {
-                res.json({ message: "Email already exists", success: false });
-            } if (req.body.password.length > 0) {
-                console.log(req.body.password);
-                console.log(req.body.password.length)
+                console.log("email already exists")
+            } if (req.body.password.length > 4) {
                 console.log("This email is unique, proceed")
                 bcrypt.hash(req.body.password, 10, function (error, hash) {
                     console.log("PASSWORD FROM THE BODY >>>>>>>>", req.body.password)
-                    if (error) {
-                        console.log("THERE WAS AN ERROR WHILE HASHING PW", error);
-                        res.json({ message: "Error", error: error, success: false })
-                    } else {
+                    if (error) throw error;
+                     else {
                         console.log("HASHED PASSWORD >>>>>>>>>>", hash) 
                         var sql = `INSERT INTO UserSQL_DB.users (first_name, last_name, email, password, created_at, updated_at, admin) VALUES ('${req.body.first_name}', '${req.body.last_name}', '${req.body.email}', '${hash}', NOW(), NOW(), '0');`;
                         connection.query(sql, function (err, result) {
-                            if (err) throw err;
-                            res.json({ message: 'ok', success: true });
+                            console.log("MAKING QUERY")
+                            if (err) throw err; 
+                            res.json({ message: 'ok', success: true });   
                         });
                     }
                 })
             }
-            res.json({message: "fail", success: false})
+            else {
+                res.json({message: "fail", success: false})
+            }
     
         });
 
@@ -50,11 +49,14 @@ module.exports = {
         // find
         var sql = `SELECT email, admin, id FROM users WHERE email='${req.body.email}' LIMIT 1;`
         connection.query(sql, function (error, user) {
-            if (error) throw err;
-
+            if (error) throw error;
+            console.log("ERROR WHILE CHECKING USER DURING LOGIN >>>>>>>>>", error)
+            console.log("THIS WAS THE USER FOUND>>>>>>>>", user);
             if (user.length > 0) {
                 console.log("USER", user)
                 if (user[0]['email'] === req.body.email) {
+                    console.log("EMAIL >>>>>>>>>>", user[0]['email']);
+                    console.log("REQ.BODY.EMAIL >>>>>>>>", req.body.email);
                     console.log("email was found in the database");
                     var pass_sql = `SELECT password FROM users WHERE email = '${req.body.email}' LIMIT 1;`
                     connection.query(pass_sql, function (err, sql_res) {
@@ -78,8 +80,7 @@ module.exports = {
                                 }
                             } else {
                                 // if password does not match the hased password in DB
-                                console.log("Password does not match")
-
+                                console.log("Password does not match");
 
                             }
                         })
@@ -90,6 +91,9 @@ module.exports = {
                     res.json({ message: "Error while trying to login", canLogin: false, admin: false });
                 }
             }
+            console.log("Login in does not match anything in DB >>>>>>>>, cannot LOGIN");
+            res.json({message: "User does not exist within our db", canLogin: false, admin: false});
+            
         })
     },
 
@@ -145,18 +149,6 @@ module.exports = {
         });
         console.log('req.session after destroy =>'.yellow, req.session);
     }
-
-
-
-
-
-
-
-
-
-
-
-    //---- EOF
 }
 
 
