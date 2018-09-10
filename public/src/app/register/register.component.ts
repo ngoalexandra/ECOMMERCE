@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     this.newUser = {
       first_name: '',
       last_name: '',
-      email: '',
+      email: null,
       password: '',
       pass2: '',
       created_at: '',

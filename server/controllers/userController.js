@@ -7,7 +7,8 @@ module.exports = {
         var email_query = `SELECT email FROM users WHERE email = '${req.body.email}' LIMIT 1;`
         connection.query(email_query, function (err, email) {
             if (err) throw err;
-            if (email.length > 0) {
+            console.log("EMAIL after query >>>>>>>>>>", email)
+            if (email.length > 0 ) {
                 console.log("THIS IS THE EMAIL>>>>>>>>", email)
                 console.log("EMAIL.LENGTH >>>>>>>>", email.length)
                 console.log("email already exists")
@@ -24,13 +25,13 @@ module.exports = {
                         console.log("MAKING QUERY")
                         console.log("RESULTS WHEN CREATING NEW USER>>>>>>>>", result);
                         if (err) throw err;
-                        res.json({ message: 'ok', success: true });
+                        res.json({ message: 'User is now registered', success: true });
                     });
 
                 })
             }
             else {
-                res.json({ message: "fail", success: false })
+                res.json({ message: "Failed to register, please check all requirements.", success: false })
             }
 
         });
@@ -53,23 +54,28 @@ module.exports = {
         // find
         var sql = `SELECT email, admin, id FROM users WHERE email='${req.body.email}' LIMIT 1;`
         connection.query(sql, function (error, user) {
-            if (error) throw error;
-            console.log("ERROR WHILE CHECKING USER DURING LOGIN >>>>>>>>>", error)
-            console.log("THIS WAS THE USER FOUND>>>>>>>>", user);
+            if (error) {
+                console.log("ERROR WHILE CHECKING USER DURING LOGIN >>>>>>>>>", error)
+                console.log("THIS WAS THE USER FOUND>>>>>>>>", user);
+                console.log("THIS IS THE USERS PW >>>>>>>", user['password']);
+                res.json({message: "Error", canLogin: false, admin: false})
+                return;
+            }
             if (user.length > 0) {
                 console.log("USER", user)
                 if (user[0]['email'] === req.body.email) {
-                    console.log("EMAIL >>>>>>>>>>", user[0]['email']);
-                    console.log("REQ.BODY.EMAIL >>>>>>>>", req.body.email);
-                    console.log("email was found in the database");
                     var pass_sql = `SELECT password FROM users WHERE email = '${req.body.email}' LIMIT 1;`
                     connection.query(pass_sql, function (err, sql_res) {
                         console.log("SQL_RES >>>>>>>", sql_res);
                         if (err) throw err;
+                        console.log("ERORRRRR AFTER PASS_SQL >>>>>>>", err);
                         bcrypt.compare(req.body.password, sql_res[0].password, function (error, hash_result) {
-                            if (error) throw error;
-                            console.log("ERORRRRRRRRRRR >>>>>>>>>>", error);
-                            console.log(hash_result);
+                            if (error) {
+                                console.log("ERORRRRRRRRRRR >>>>>>>>>>", error);
+                                console.log("HASHED PW >>>>>>>>>",hash_result);
+                                res.json({message: "Error", canLogin: false, admin: false});
+                                return;
+                            }
                             if (hash_result === true) {
                                 // check if they are admin
                                 if (user[0].admin === 1) {
