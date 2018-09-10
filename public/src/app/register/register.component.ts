@@ -39,8 +39,8 @@ export class RegisterComponent implements OnInit {
             alert("successfully registered, proceed by logging in")
             this._router.navigate(['/login']);
           } else {
-            console.log('invalid result - server error not saved');
-            alert("Registration was unsuccessful")
+            console.log("SERVER RES WHEN REGISTERING >>>>>", res)
+            alert(res['message'])
             this._router.navigate(['/register'])
           }
         });

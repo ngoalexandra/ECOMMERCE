@@ -8,27 +8,31 @@ module.exports = {
         connection.query(email_query, function (err, email) {
             if (err) throw err;
             if (email.length > 0) {
+                console.log("THIS IS THE EMAIL>>>>>>>>", email)
+                console.log("EMAIL.LENGTH >>>>>>>>", email.length)
                 console.log("email already exists")
+                res.json({ message: "email already exists", success: false });
+                return;
             } if (req.body.password.length > 4) {
                 console.log("This email is unique, proceed")
                 bcrypt.hash(req.body.password, 10, function (error, hash) {
                     console.log("PASSWORD FROM THE BODY >>>>>>>>", req.body.password)
                     if (error) throw error;
-                     else {
-                        console.log("HASHED PASSWORD >>>>>>>>>>", hash) 
-                        var sql = `INSERT INTO UserSQL_DB.users (first_name, last_name, email, password, created_at, updated_at, admin) VALUES ('${req.body.first_name}', '${req.body.last_name}', '${req.body.email}', '${hash}', NOW(), NOW(), '0');`;
-                        connection.query(sql, function (err, result) {
-                            console.log("MAKING QUERY")
-                            if (err) throw err; 
-                            res.json({ message: 'ok', success: true });   
-                        });
-                    }
+                    console.log("HASHED PASSWORD >>>>>>>>>>", hash)
+                    var sql = `INSERT INTO UserSQL_DB.users (first_name, last_name, email, password, created_at, updated_at, admin) VALUES ('${req.body.first_name}', '${req.body.last_name}', '${req.body.email}', '${hash}', NOW(), NOW(), '1');`;
+                    connection.query(sql, function (err, result) {
+                        console.log("MAKING QUERY")
+                        console.log("RESULTS WHEN CREATING NEW USER>>>>>>>>", result);
+                        if (err) throw err;
+                        res.json({ message: 'ok', success: true });
+                    });
+
                 })
             }
             else {
-                res.json({message: "fail", success: false})
+                res.json({ message: "fail", success: false })
             }
-    
+
         });
 
     },
@@ -60,9 +64,11 @@ module.exports = {
                     console.log("email was found in the database");
                     var pass_sql = `SELECT password FROM users WHERE email = '${req.body.email}' LIMIT 1;`
                     connection.query(pass_sql, function (err, sql_res) {
+                        console.log("SQL_RES >>>>>>>", sql_res);
                         if (err) throw err;
                         bcrypt.compare(req.body.password, sql_res[0].password, function (error, hash_result) {
                             if (error) throw error;
+                            console.log("ERORRRRRRRRRRR >>>>>>>>>>", error);
                             console.log(hash_result);
                             if (hash_result === true) {
                                 // check if they are admin
@@ -70,13 +76,11 @@ module.exports = {
                                     req.session.user_id = user[0].id;
                                     console.log(user[0].admin);
                                     res.json({ message: "Success", canLogin: true, admin: true });
-
                                 }
                                 else if (user[0].admin != 1) {
                                     console.log("User is not ADMIN");
                                     req.session.user_id = user[0].id;
                                     res.json({ message: "Error", canLogin: true, admin: false });
-
                                 }
                             } else {
                                 // if password does not match the hased password in DB
@@ -86,14 +90,12 @@ module.exports = {
                         })
                     })
 
-                } else {
-                    console.log("Email does not exist within our database");
-                    res.json({ message: "Error while trying to login", canLogin: false, admin: false });
                 }
             }
             console.log("Login in does not match anything in DB >>>>>>>>, cannot LOGIN");
-            res.json({message: "User does not exist within our db", canLogin: false, admin: false});
-            
+            return;
+            res.json({ message: "User does not exist within our db", canLogin: false, admin: false });
+
         })
     },
 
