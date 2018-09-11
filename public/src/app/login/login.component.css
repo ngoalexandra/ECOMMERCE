@@ -10,7 +10,7 @@
     text-align: center;
     margin-bottom: 10px;
     padding-bottom: 10px;
-    border-bottom: 3px solid rgb(254, 137, 98); 
+    border-bottom: 3px solid #3A445D; 
 }
 
 input[type=email], input[type=password] {
@@ -23,7 +23,7 @@ input[type=email], input[type=password] {
 }
 
 button {
-    background-color: rgb(254, 137, 98);
+    background-color: #3A445D;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;

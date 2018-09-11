@@ -1,3 +1,8 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+</head>
+
 <div class="wrapper">
 
   <br>
@@ -6,7 +11,7 @@
 
       <span *ngIf="isLoggedIn['isAdmin'] === true">
         <li>
-          <a [routerLink]= "['admindash']"> Admin Dashboard </a>
+          <a [routerLink]="['admindash']"> Admin Dashboard </a>
         </li>
       </span>
 
@@ -17,7 +22,9 @@
       </span>
 
       <li>
-        <a class="active" [routerLink]="['']">Home</a>
+        <a class="active" [routerLink]="['']">
+            <i class="fas fa-home"></i>
+          Home</a>
       </li>
 
       <li>
@@ -33,7 +40,10 @@
       </li>
 
       <li>
-        <a (click)="goToCheckout()"> Cart ({{cart_total}})
+        
+        <a (click)="goToCheckout()">
+            <i class="fas fa-cart-plus"></i>
+             Cart ({{cart_total}})
         </a>
       </li>
 

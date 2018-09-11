@@ -1,5 +1,9 @@
+* {
+    font-family: sans-serif;
+}
+
 .wrapper{
-    background-color: rgb(241, 246, 246);
+    background-color: black;
     height: 30px;;
     padding: 5px;
     min-height: 50px;
@@ -7,9 +11,14 @@
 
 /* ============= FOOTER ============== */
 div.footer{
-    background-color: rgb(241, 246, 246);
+    background-color: black;
     height: 30px;
     font-size: 10pt;
     text-align: center;
     padding-top: 10px;
+    color: white;
+}
+
+.footer a {
+    color: white;
 }

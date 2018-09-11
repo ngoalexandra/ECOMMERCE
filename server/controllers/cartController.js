@@ -85,14 +85,14 @@ module.exports = {
         console.log("this is what is in the params >>>>>>".green, req.params)
         console.log("id in params >>>>>>".blue, req.params.id)
         // when we filter, we are removing that specific item with that id from the cart
-        if (req.session['cart']){
+        if (req.session['cart']) {
             console.log("THERE IS A CART >>>>>>>>>", req.session.cart)
-            req.session['cart'] = req.session['cart'].filter(itemId => itemId.id != req.params.id )
+            req.session['cart'] = req.session['cart'].filter(itemId => itemId.id != req.params.id)
             console.log("CART SESSION AFTER FILTER >>>>>>>>>>>", req.session.cart)
             console.log("current length >>>>>>>>>>>".red, req.session.cart.length)
 
         }
-        res.json({message: "Item has been removed from cart", revisedCart: req.session['cart']});
+        res.json({ message: "Item has been removed from cart", revisedCart: req.session['cart'] });
 
     }
 }

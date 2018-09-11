@@ -3,6 +3,11 @@
     font-family: sans-serif;
 
 }
+.wrapper{
+    margin: auto;
+    width: 750px;
+    height: 200px;
+}
 
     .topNav button{
         display: inline-block;
@@ -31,11 +36,8 @@ thead{
 /* removes bullets from list */
 ul {
     list-style-type: none;
-    background-color: rgb(241, 246, 246);
-    border-bottom: 3px solid #191923;
-    margin: 0px;
+    border-bottom: 3px solid rgb(14, 69, 178);
     padding: 0px;
-    /* border: 1px solid #555; */
     overflow: hidden;
 
 }
@@ -53,12 +55,12 @@ li a:hover:not(.active) {
 /* build vertical nav bar */
 
 li a{
+    
     display: block;
     color: #000;
     padding: 8px 35px;
     padding-right: 35px;
     text-decoration: none;
-    /* margin-left: 40px; */
     text-align: center;
 }
 
