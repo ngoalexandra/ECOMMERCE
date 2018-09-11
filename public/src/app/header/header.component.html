@@ -9,9 +9,20 @@
   <div class="nav">
     <ul>
 
+      <li>
+        <a class="active" [routerLink]="['']">
+          <i class="fas fa-home"></i>
+          Home</a>
+      </li>
+      <li>
+          <a [routerLink]="['/about']">
+          
+            About </a>
+        </li>
+
       <span *ngIf="isLoggedIn['isAdmin'] === true">
         <li>
-          <a [routerLink]="['admindash']"> Admin Dashboard </a>
+          <a [routerLink]="['admindash']"> Inventory </a>
         </li>
       </span>
 
@@ -22,12 +33,6 @@
       </span>
 
       <li>
-        <a class="active" [routerLink]="['']">
-            <i class="fas fa-home"></i>
-          Home</a>
-      </li>
-
-      <li>
         <a [routerLink]="['/login']">Login</a>
       </li>
 
@@ -36,14 +41,15 @@
       </li>
 
       <li>
-        <a (click)="goToProducts()"> Products </a>
+        <a (click)="goToProducts()"> <i id = "shirt" class="fas fa-tshirt"></i>
+          Shop </a>
       </li>
 
       <li>
-        
+
         <a (click)="goToCheckout()">
-            <i class="fas fa-cart-plus"></i>
-             Cart ({{cart_total}})
+            <i class="fas fa-shopping-cart"></i>
+          Cart ({{cart_total}})
         </a>
       </li>
 
@@ -63,11 +69,10 @@
 
     <!-- ============= TOP NAV BAR ============== -->
     <div class="topNav">
-      <img src="images/t_logo.png" alt="">
       <div class="center_title">
       </div>
       <span *ngIf="isLoggedIn['loggedIn'] === true">
-        <button (click)="destroySession()"> Log out</button>
+        <button (click)="destroySession()"> Log Out</button>
       </span>
     </div>
 
