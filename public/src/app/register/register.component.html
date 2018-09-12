@@ -10,14 +10,17 @@
       <input type="text" [(ngModel)]="newUser.first_name" name="first_name" placeholder="First Name" required pattern="[a-zA-Z ]*" minlength="2" #name="ngModel">
       <div *ngIf="name.errors && (name.dirty || name.touched)">
         <p id = "errors" *ngIf="name.errors.required">
+            <i class="fa fa-times-circle"></i>
           Name cannot be empty.
         </p>
 
         <p id = "errors" *ngIf="name.errors.minlength">
+            <i class="fa fa-times-circle"></i>
           Name must be longer than 2 characters.
         </p>
 
         <p id = "errors" *ngIf="name.errors.pattern">
+            <i class="fa fa-times-circle"></i>
           Name can only contain letters A-Z
         </p>
       </div>
@@ -32,14 +35,17 @@
       <div *ngIf="last.errors && (last.dirty || last.touched)">
 
         <p id = "errors" *ngIf="last.errors.required">
+            <i class="fa fa-times-circle"></i>
           Last name cannot be empty.
         </p>
 
         <p id = "errors" *ngIf="last.errors.minlength">
+            <i class="fa fa-times-circle"></i>
           Last name must be longer than 2 characters.
         </p>
 
         <p id = "errors" *ngIf="last.errors.pattern">
+            <i class="fa fa-times-circle"></i>
           Last name can only contain letters A-Z
         </p>
       </div>
@@ -54,14 +60,17 @@
       <div *ngIf="email.errors && (email.dirty || email.touched)">
 
         <p id = "errors"  *ngIf="email.errors.required">
+            <i class="fa fa-times-circle"></i>
           Email feild cannot be empty.
         </p>
 
         <p id = "errors" *ngIf="email.errors.minlength">
+            <i class="fa fa-times-circle"></i>
           Email must be longer than 4 characters.
         </p>
 
         <p id="errors" *ngIf="email.errors.pattern">
+            <i class="fa fa-times-circle"></i>
           Email format is incorrect. EX: email_123@yahoo.com
         </p>
       </div>
@@ -77,14 +86,17 @@
       <div *ngIf="pw.errors && (pw.dirty || pw.touched)">
 
         <p id = "errors" *ngIf="pw.errors.required">
+            <i class="fa fa-times-circle"></i>
           Please enter a password
         </p>
 
         <p id = "errors" *ngIf="pw.errors.minlength">
+            <i class="fa fa-times-circle"></i>
           Password must be longer than 5 characters.
         </p>
 
         <p id="errors" *ngIf="pw.errors.pattern">
+            <i class="fa fa-times-circle"></i>
           Password must contain at least 1 uppercase letter, 1 lowercase letter and a number.
         </p>
       </div>
@@ -98,6 +110,7 @@
       <div *ngIf="cPW.errors && (cPW.dirty || cPW.touched)">
 
         <p id = "errors" *ngIf="cPW.errors.required">
+            <i class="fa fa-times-circle"></i>
           Confirmation password field must be filled and must match password above.
         </p>
 

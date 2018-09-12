@@ -1,6 +1,9 @@
 * {
     font-family: sans-serif;
 }
+.product_list h2{
+    text-align: center;
+}
 .wrapper{
     border-radius: 10px;
     background-color: white;

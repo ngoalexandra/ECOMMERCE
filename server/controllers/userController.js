@@ -57,7 +57,6 @@ module.exports = {
             if (error) {
                 console.log("ERROR WHILE CHECKING USER DURING LOGIN >>>>>>>>>", error)
                 console.log("THIS WAS THE USER FOUND>>>>>>>>", user);
-                console.log("THIS IS THE USERS PW >>>>>>>", user['password']);
                 res.json({ message: "Error", canLogin: false, admin: false })
                 return;
             }

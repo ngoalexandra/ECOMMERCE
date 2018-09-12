@@ -1,7 +1,5 @@
-<button [routerLink]="['/admindash']">
-    Back</button>
+
 <div class="dashboard_container">
-    dashboard_container
     <div class="create_product">
         <div class="create_form">
             Add New Product
@@ -46,8 +44,8 @@
                     <input ngModel type="text" name="color" placeholder="color">
                     <!-- <input class='img_field' type="file" name="image" accept="image/*"> -->
                     <br>
-
-                    <button class="reset_button">RESET</button>
+                    <button class ="create_button" [routerLink]="['/admindash']">
+                        BACK</button>
                     <button class="create_button">ADD</button>
                 </form>
             </div>

@@ -52,13 +52,13 @@ div.dashboard_container{
     border-radius: 15px;
     text-align: center;
     font-size: 16px;
-    border: 1px solid #DEE7E7; 
+    border: 1px solid #3A445D; 
     background-color: white; 
     /* webkit-transition-duration: 0.4s; Safari */
     transition-duration: 0.4s;
 }
     .labels button:hover {
-        background-color: #DEE7E7;
+        background-color: #3A445D;
         color: white;
         /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
     }
@@ -68,7 +68,7 @@ div.dashboard_container{
         padding: 12px 20px;
         margin: 8px 0;
         display: inline-block;
-        border: 1px solid #ccc;
+        border: 1px solid #3A445D;
         box-sizing: border-box;
     }
 

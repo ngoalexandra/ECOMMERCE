@@ -2,6 +2,7 @@
     font-family: sans-serif;
 
 }
+
 .wrapper{
     background-color: white;
     /* gradient effect */
@@ -50,5 +51,14 @@ button:hover {
 /* VALIDATION ERRORS */
 
 #errors{
-    color: red;
+    color: rgb(255, 48, 58);
+    margin: 5px 0px;
+    padding: 4px; 
+    font-size: 0.7rem;   
 }
+#errors .i {
+    vertical-align:middle;
+    
+}
+
+

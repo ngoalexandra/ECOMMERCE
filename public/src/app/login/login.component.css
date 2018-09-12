@@ -54,8 +54,10 @@ button:hover {
 #isa_error {
     color: rgb(255, 48, 58);
     margin: 5px 0px;
-    padding: 4px;    
-}
+    padding: 4px;
+    font-size: 0.7rem;   
+}    
+
 #isa_error .i {
     vertical-align:middle;
     
