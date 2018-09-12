@@ -8,7 +8,7 @@ module.exports = {
         connection.query(email_query, function (err, email) {
             if (err) throw err;
             console.log("EMAIL after query >>>>>>>>>>", email)
-            if (email.length > 0 ) {
+            if (email.length > 0) {
                 console.log("THIS IS THE EMAIL>>>>>>>>", email)
                 console.log("EMAIL.LENGTH >>>>>>>>", email.length)
                 console.log("email already exists")
@@ -58,39 +58,50 @@ module.exports = {
                 console.log("ERROR WHILE CHECKING USER DURING LOGIN >>>>>>>>>", error)
                 console.log("THIS WAS THE USER FOUND>>>>>>>>", user);
                 console.log("THIS IS THE USERS PW >>>>>>>", user['password']);
-                res.json({message: "Error", canLogin: false, admin: false})
+                res.json({ message: "Error", canLogin: false, admin: false })
                 return;
             }
+            console.log("IS THERE A USER AFTER QUERY????? >>>>>", user, user.length)
             if (user.length > 0) {
                 console.log("USER", user)
                 if (user[0]['email'] === req.body.email) {
+                    console.log("EMAIL >>>>>>>>>", req.body.email);
                     var pass_sql = `SELECT password FROM users WHERE email = '${req.body.email}' LIMIT 1;`
                     connection.query(pass_sql, function (err, sql_res) {
                         console.log("SQL_RES >>>>>>>", sql_res);
-                        if (err) throw err;
+                        if (err) {
+                            console.log("Error during query  >>>>>>")
+                            res.json({ message: "Information is incorrect, Please register first", canLogin: false, admin: false });
+                            return;
+                        }
                         console.log("ERORRRRR AFTER PASS_SQL >>>>>>>", err);
                         bcrypt.compare(req.body.password, sql_res[0].password, function (error, hash_result) {
                             if (error) {
                                 console.log("ERORRRRRRRRRRR >>>>>>>>>>", error);
-                                console.log("HASHED PW >>>>>>>>>",hash_result);
-                                res.json({message: "Error", canLogin: false, admin: false});
+                                console.log("HASHED PW >>>>>>>>>", hash_result);
+                                res.json({ message: "Error", canLogin: false, admin: false });
                                 return;
                             }
                             if (hash_result === true) {
                                 // check if they are admin
                                 if (user[0].admin === 1) {
                                     req.session.user_id = user[0].id;
-                                    console.log(user[0].admin);
-                                    res.json({ message: "Success", canLogin: true, admin: true });
+                                    console.log("*************", user[0].admin);
+                                    res.json({ message: "ADMIN logged in", canLogin: true, admin: true });
+                                    console.log("AFTER RESULTS >>>>>>>>>>>>....")
+                                    return;
                                 }
                                 else if (user[0].admin != 1) {
                                     console.log("User is not ADMIN");
                                     req.session.user_id = user[0].id;
-                                    res.json({ message: "Error", canLogin: true, admin: false });
+                                    res.json({ message: "USER logged in!", canLogin: true, admin: false });
+                                    return;
                                 }
                             } else {
                                 // if password does not match the hased password in DB
                                 console.log("Password does not match");
+                                res.json({ message: "Incorrect Password, please try again", canLogin: false, admin: false });
+                                return;
 
                             }
                         })
@@ -98,9 +109,11 @@ module.exports = {
 
                 }
             }
-            console.log("Login in does not match anything in DB >>>>>>>>, cannot LOGIN");
-            return;
-            res.json({ message: "User does not exist within our db", canLogin: false, admin: false });
+            else {
+                console.log("Login in does not match anything in DB >>>>>>>>, cannot LOGIN");
+                res.json({ message: "Register first", canLogin: false, admin: false });
+                return;
+            }
 
         })
     },

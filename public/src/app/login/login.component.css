@@ -7,7 +7,7 @@
     /* gradient effect */
     /* background-image: linear-gradient( #949BA0, #BCD4DE ); */
     padding: 5px;
-    min-height: 300px;
+    min-height: 200px;
 }
 
 .container h3{
@@ -51,6 +51,12 @@ button:hover {
 
 /* VALIDATION ERRORS */
 
-#errors {
-    color: red;
+#isa_error {
+    color: rgb(255, 48, 58);
+    margin: 5px 0px;
+    padding: 4px;    
+}
+#isa_error .i {
+    vertical-align:middle;
+    
 }

@@ -1,5 +1,4 @@
-CHECKOUT
- <button (click) = "clearCart()">Clear Cart</button>
+<h2>Checkout</h2>
     <hr>
 
     <div class="table">
@@ -23,8 +22,7 @@ CHECKOUT
                     <td>$ {{product.price}}</td>
                     <td>$ {{product.total_price}}</td>
                     <td>
-                        <button [routerLink]="['/edit/' , product.id]" class="edit_button">EDIT</button>
-                        <button (click)="deleteProduct(product.id)" class="delete_button">DELETE</button>
+                            <button (click) = "clearCart()">Clear Cart</button>
                     </td>
                 </tr>
             </tbody>

@@ -1,7 +1,8 @@
+
+<head>
+  
+</head>
 <div class="wrapper">
-
-  <a [routerLink]="['/']">Back Home</a>
-
 
   <div class="container">
     <h3>LOGIN</h3>
@@ -17,15 +18,20 @@
       <!-- EMAIL VALIDATIONS -->
       <div *ngIf="email.errors && (email.dirty || email.touched)">
 
-        <p id="errors" *ngIf="email.errors.required">
+
+
+        <p id="isa_error" *ngIf="email.errors.required">
+          <i class="fa fa-times-circle"></i>
           Email cannot be empty.
         </p>
 
-        <p id="errors" *ngIf="email.errors.minlength">
+        <p id="isa_error" *ngIf="email.errors.minlength">
+          <i class="fa fa-times-circle"></i>
           Email must be more than 4 characters.
         </p>
 
-        <p id="errors" *ngIf="email.errors.pattern">
+        <p id="isa_error" *ngIf="email.errors.pattern">
+          <i class="fa fa-times-circle"></i>
           Email format is incorrect. EX: email_123@yahoo.com
         </p>
 
@@ -40,22 +46,25 @@
       <input [(ngModel)]="loginUser.password" name="loginUser.password" type="password" name="password" placeholder="Password"
         required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$" minlength="5" #password="ngModel">
       <br>
-          <!-- PASSWORD VALIDATIONS -->
-          <div *ngIf="password.errors && (password.dirty || password.touched)">
+      <!-- PASSWORD VALIDATIONS -->
+      <div *ngIf="password.errors && (password.dirty || password.touched)">
 
-              <p id="errors" *ngIf="password.errors.required">
-                Password cannot be empty.
-              </p>
-      
-              <p id="errors" *ngIf="password.errors.minlength">
-                Password must contain at least 5 characters.
-              </p>
+        <p id="isa_error" *ngIf="password.errors.required">
+          <i class="fa fa-times-circle"></i>
+          Password cannot be empty.
+        </p>
 
-              <p id="errors" *ngIf="password.errors.pattern">
-                Password must contain at least 1 uppercase letter, 1 lowercase letter and a number.
-              </p>
-              
-            </div>
+        <p id="isa_error" *ngIf="password.errors.minlength">
+          <i class="fa fa-times-circle"></i>
+          Password must contain at least 5 characters.
+        </p>
+
+        <p id="isa_error" *ngIf="password.errors.pattern">
+          <i class="fa fa-times-circle"></i>
+          Password must contain at least 1 uppercase letter, 1 lowercase letter and a number.
+        </p>
+
+      </div>
       <button type="submit">Login</button>
       <!-- <hr> email: {{ loginUser | json }}
       <br> pass: {{ loginUser.pass }}

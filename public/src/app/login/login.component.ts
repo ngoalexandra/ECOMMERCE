@@ -57,21 +57,21 @@ export class LoginComponent implements OnInit {
             this.isLoggedIn['isAdmin'] = true;
             // .next is updating values
             this._dataService.isLoggedIn.next(this.isLoggedIn)
-            alert('ADMIN Logged In!');
+            alert(res['message']);
             this.goToAdmin();
           } else if (res.admin !== true) {
             console.log("User is not ADMIN >>>>>>>>>>>")
             this.isLoggedIn['loggedIn'] = true;
             this.isLoggedIn['isAdmin'] = false;
             this._dataService.isLoggedIn.next(this.isLoggedIn)
-            alert('USER logged in!');
+            alert(res['message']);
             this.goToProducts();
           }
           console.log("before else statement >>>>>>>>>>")
         }
         else {
           console.log("FAILED LOGIN >>>>>>>>>>>>")
-          alert('FAIL. Information entered is either incorrect or must register first');
+          alert(res['message']);
           return;
         }
       });
