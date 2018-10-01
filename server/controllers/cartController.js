@@ -1,5 +1,5 @@
 module.exports = {
-    // ============== DATA FOR CART SESSION ======================
+    // ============== Cart's data in session ======================
     checkOutSession: (req, res) => {
         console.log(">>>>>>>>> req.body", req.body);
         // for the req, it is recieving the cart object (this.cart) being sent from the front-end . In the component.ts 
@@ -11,28 +11,22 @@ module.exports = {
         for (var i = 0; i < req.body['cart'].length; i++) {
             //push the id into the array
             prod_id_arr.push(req.body['cart'][i]['id']);
-
             // if there is only one in the array string will only equal that id
             if (prod_id_arr.length === 1) {
-                string_of_ids += (req.body['cart'][i]['id'])
+                string_of_ids += (req.body['cart'][i]['id']);
             }
-
             // if there is more than one ID in the array, separate by a comma
             else if (prod_id_arr.length > 1) {
                 string_of_ids += (', ' + (req.body['cart'][i]['id']));
-            }
-        }
+            };
+        };
         console.log(' id array =====>', prod_id_arr);
         console.log('string ========>', string_of_ids);
-
         // set in session
         req.session.string_of_ids = string_of_ids;
         req.session['cart'] = req.body['cart'];
         res.json({ message: "Success" })
     },
-
-
-    // ================= GET ALL CART ITEMS ====================
 
     getAllCartItems: (req, res) => {
         var total_price = 0;
@@ -48,12 +42,13 @@ module.exports = {
             connection.query(sql, function (err, results) {
                 if (err) throw err;
                 //  ********  calcuate price of each product  **********
-                // first loop is to loop through the results, second loop is to loop through products in the cart. if the product from the DB matches the PRODUCT ID in cart's session , the total price is the product's price in DB * session's quantity of that item
+                // first loop is to loop through the results, second loop is to loop through products in the cart. 
+                //if the product from the DB matches the PRODUCT ID in cart's session , the total price is the 
+                //product's price in DB * session's quantity of that item
                 for (var i = 0; i < results.length; i++) {
                     for (var i = 0; i < req.session['cart'].length; i++) {
-
                         if (results[i]['id'] === req.session['cart'][i]['id']) {
-                            total_price = (results[i]['price'] * req.session['cart'][i]['qty'])
+                            total_price = (results[i]['price'] * req.session['cart'][i]['qty']);
                             final_price += total_price;
                             totalItemsBack.push({
                                 id: results[i]['id'],
@@ -61,23 +56,20 @@ module.exports = {
                                 price: results[i]['price'],
                                 qty: req.session['cart'][i]['qty'],
                                 total_price: total_price
-                            })
-                        }
-                    }
-                }
+                            });
+                        };
+                    };
+                };
                 res.json({ message: "Success", results: results, totalItemsBack: totalItemsBack, final_price: final_price });
             });
-        }
+        };
     },
-    // ============== CLEAR SESSION =====================
 
     clearSession: (req, res) => {
         req.session['cart'] = null;
         console.log("***************", req.session['cart'])
         res.json({ message: "Successfully cleared cart" });
     },
-
-    // =================== REMOVE FROM SESSION =====================
 
     removeFromSession: (req, res) => {
         // the req is the cart we are getting back from the component
@@ -91,7 +83,7 @@ module.exports = {
             console.log("CART SESSION AFTER FILTER >>>>>>>>>>>", req.session.cart)
             console.log("current length >>>>>>>>>>>".red, req.session.cart.length)
 
-        }
+        };
         res.json({ message: "Item has been removed from cart", revisedCart: req.session['cart'] });
 
     }

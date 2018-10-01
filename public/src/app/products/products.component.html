@@ -1,5 +1,5 @@
 <div class="wrapper">
-  products component
+
   <div class="search">
         <input (keyup)="onKey($event)" class="search-container" type="text" placeholder="Search...">
         <button type="submit">
@@ -7,18 +7,17 @@
         </button>
     </div>
   <br>
-  <a [routerLink]= "['/']">back to main</a>
+ 
   <hr>
 
-<!-- *************************************** -->
+
 <!-- ************* MAIN CONTENT ************ -->
-<!-- *************************************** -->
 
 <!-- =========== LEFT FILTER ============ -->
 <div class="content_wrap">
 
     <div class="left_filter">
-        <b>Filter:</b>
+        <b>Sort by:</b>
         <br>
         <hr>
         <br>
@@ -32,9 +31,7 @@
     
     <div class="content">
 
-        <div class="pages">
-            < 1 | 2 | 3 | 4 | 5 | .... | 14 >
-        </div>
+       
         <!-- content -->
         
         <div *ngFor = "let product of allProducts" class="item">
@@ -53,9 +50,6 @@
                 <h3>Price: ${{product.price}}</h3>
                 Description: {{product.description}}
             </div>
-        </div>
-        <div class="pages">
-            < 1 | 2 | 3 | 4 | 5 | .... | 14 >
         </div>
         
     </div>

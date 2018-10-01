@@ -37,7 +37,7 @@ thead{
 /* removes bullets from list */
 ul {
     list-style-type: none;
-    border-bottom: 1px solid rgb(14, 69, 178);
+    border-bottom: 1px solid #3A445D;
     padding: 0px;
     overflow: hidden;
 
@@ -97,7 +97,7 @@ tr:hover {
     background-color: silver;
 }
 #shirt{
-    color: blue;
+    color: rgb(36, 65, 140);
 }
 
 

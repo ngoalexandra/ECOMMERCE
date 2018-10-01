@@ -1,21 +1,21 @@
 
 
 *{
-    /* outline: 1px dotted red; */
     margin: 0;
-    padding: 0;
-}
-body {
+    padding: 0; 
+}  
+ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 div.wrapper{
-    /* align-content: center; */
+    align-content: center;
     margin-left: 8%;
     margin-right: 8%;
     min-height: 500px;
     max-width: 1300px;
-}
+} 
 
 
 
@@ -40,20 +40,25 @@ div.left_filter{
         height: auto;
         /* margin: 10px; */
     }
+    div.filter_price button{
+        padding: 3px;
+        margin: auto;
+        margin-bottom: 3px;
+    }
 
 /* ============ MAIN CONTENT & PAGES ========= */
 div.content{
     background-color: white;
     display: inline-block;
     vertical-align: top;
-    width: 700px;
+    width: 800px;
     min-height: 600px;
 }
 
     .content .pages{
         margin-top: 10px;
         margin-bottom: 10px;
-        background-color: rgb(254, 137, 98);
+        background-color: #3A445D;
         text-align: center;
     }
 
@@ -63,9 +68,11 @@ div.content{
         background-color: white;
         opacity: 0.8;
         border-bottom: 1px solid #BCD4DE;
-        min-height: 60px;
-        width: 700px;
+        min-height: 200px;
+        width: 300px;
+        display: inline-block;
     }
+
     /* --------- PRODUCT IMG --------- */
         .content .item .product_img{
             border-radius: 15px 15px 15px 15px;
@@ -93,26 +100,38 @@ div.content{
         }
 
 
-/**************************************
-**             BUTTONS               **
-**************************************/
-
 /* ====== SEARCH BUTTON ========= */
 div.search {
     display: block;
-    background-color:rgb(254, 137, 98);
+    background-color:#3A445D;
     /* width: 800px; */
     border-radius: 8px;
     width: 30%;
-    padding: 5px;
+    padding: 10px;
     margin: 0 auto;
     text-align: center;
     margin-bottom: 10px;
+    
+}
+
+.search-container{
+    margin-right: 20px;
+    padding: 2px;
+
+}
+
+div.search button{
+    padding: 2px;
+    border-radius: 8px;
+
 }
     div.search button:hover{
         color: white;
-        background-color: rgb(250, 173, 68);
+        background-color: #3A445D;
+        padding: 2px;
+        border-radius: 8px;
     }
+
     button.addToCartBtn{
         margin-top: 5px;
         margin-bottom: 5px;
@@ -123,13 +142,14 @@ div.search {
         border-radius: 15px;
         text-align: center;
         font-size: 18px;
-        border: 2px solid rgb(254, 137, 98); 
+        border: 2px solid #3A445D; 
         background-color: white; /* Green */
         /* webkit-transition-duration: 0.4s; Safari */
         transition-duration: 0.4s;
     }
+
         button.addToCartBtn:hover {
-            background-color: rgb(254, 137, 98); /* Green */
+            background-color: #3A445D; /* Green */
             color: white;
             /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
         }
@@ -145,13 +165,13 @@ div.search {
     border-radius: 10px;
     text-align: center;
     font-size: 14px;
-    border: 2px solid rgb(254, 137, 98); 
+    border: 2px solid #3A445D; 
     background-color: white; /* Green */
     /* webkit-transition-duration: 0.4s; Safari */
     transition-duration: 0.4s;
 }
     .item button:hover {
-        background-color: rgb(254, 137, 98); /* Green */
+        background-color: #3A445D; /* Green */
         color: white;
         /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
     }
